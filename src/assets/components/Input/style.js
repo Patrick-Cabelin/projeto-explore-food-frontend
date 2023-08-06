@@ -4,12 +4,8 @@ export { Container };
 
 const Container = styled.div`
   width: 100%;
+  display: none;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  
   input{
     width: 100%;
     height: 5.6rem;
@@ -29,5 +25,16 @@ const Container = styled.div`
     }
 
     > svg {}
+
+  }
+
+  @media (min-width: 769px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input{
+      /* background-color: red; */
+    }
   }
 `;

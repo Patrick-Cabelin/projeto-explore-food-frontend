@@ -3,8 +3,6 @@ import styled from "styled-components"
 export {Container}
 
 const Container = styled.button`
-    font-size: 1.6rem;
-    line-height: 2.1rem;
 
     border: none;
     background: none;
@@ -15,7 +13,8 @@ const Container = styled.button`
     align-items: center;
     gap: .8rem; 
 
-    color:${({ theme }) => theme.COLORS.PINK};
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+    font:  ${({ theme }) => theme.FONTS.POPPINS_300_BOLD};
 
     &:hover {
         filter: brightness(0.9);

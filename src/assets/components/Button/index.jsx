@@ -7,7 +7,7 @@ function Button({title, loading = false ,icon: Icon,...rest}){
        disabled = {loading}
        >
         {Icon &&<Icon size={20}/>}
-        {title}
+        <span>{title}</span><span>{rest.orderNumber}</span>
        </Conteiner>
     )
 }

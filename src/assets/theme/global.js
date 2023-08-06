@@ -9,10 +9,10 @@ export default createGlobalStyle`
 
     :root{
         font-size: 62.5%;
+        color: ${({theme}) => theme.COLORS.LIGHT_100 };
     }
     body{
         background: ${({theme}) => theme.COLORS.DARK_400 };
-        font-family: 'Poppins', sans-serif;
         overflow-y: auto;
         &::-webkit-scrollbar{
             background: none;
