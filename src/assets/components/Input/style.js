@@ -14,25 +14,27 @@ const Container = styled.div`
   align-items: center;
 
   input{
-    width: 25rem;
-    height: 5.6rem;
+    width: 100%;
+    height: 4.8rem;
 
     font-size: 1.6rem;
-    color: ${({ theme }) => theme.COLORS.GRAY_100};
+    font: ${({ theme }) => theme.FONTS.ROBOTO_SMALL_REGULAR};
+    color: ${({ theme }) => theme.COLORS.LIGHT_500};
     background: none;
     
     border:none;
     border-radius: 1rem;
+    outline: none;
     text-align: center;
-  
+    
     &placeholder{
-        color:${({ theme }) => theme.COLORS.GRAY_100};
-    }
-
-    > svg {}
-
+        color:${({ theme }) => theme.COLORS.LIGHT_500};
+      }    
+      
+      &:focus{
+        outline: .1rem solid ${({ theme }) => theme.COLORS.LIGHT_500};
+      }
   }
-
   @media (min-width: 769px) {
     display: flex;
     align-items: center;

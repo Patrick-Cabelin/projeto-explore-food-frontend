@@ -1,6 +1,7 @@
 import { Container, DataUser } from "./style"
 
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 import {Button} from '../../components/Button'
 import {ButtonText} from '../../components/ButtonText'
@@ -9,7 +10,15 @@ import {Icons} from '../../image/Icons'
 
 function SignUp(){
     const {Logo} = Icons()
+    
+    const [name, setName]= useState('')
+    const [email, setEmail]= useState('')
+    const [password, setPassword]= useState('')
 
+    const navigate = useNavigate()
+    function handleBack(){
+        navigate(-1)
+    }
 
     return(
         <Container>
@@ -21,15 +30,15 @@ function SignUp(){
                     <h2>Crie sua conta</h2>
                 <DataUser>
                     <label htmlFor="Iname">Seu nome</label>
-                    <Input type='txt' id='Iname' placeholder='Exemplo: Colette Tatou'/>
+                    <Input type='txt' id='Iname' placeholder='Exemplo: Colette Tatou' onChange={(event)=>setName(event.target.value)}/>
                     <label htmlFor="Iemail">Email</label>
-                    <Input type='email' id='Iemail' placeholder='Exemplo@exemplo.com'/>
+                    <Input type='email' id='Iemail' placeholder='Exemplo@exemplo.com' onChange={(event)=>setEmail(event.target.value)}/>
                     <label htmlFor="Ipassword">Senha</label>
-                    <Input type='password' id='Ipassword' placeholder='No mínimo 6 caracteres'/>
+                    <Input type='password' id='Ipassword' placeholder='No mínimo 6 caracteres' onChange={(event)=>setPassword(event.target.value)}/>
                 </DataUser>
-                <Button title={'Criar conta'} orderNumber={false}/>
+                <Button title={'Criar conta'} orderNumber={false} onClick={()=>{console.log(name, email, password)}}/>
 
-                <ButtonText title={'Já tenho uma conta'} onClick={(i)=> {console.log(i)}}/>
+                <ButtonText title={'Já tenho uma conta'} onClick={handleBack}/>
             </div>
         </Container>
     )
