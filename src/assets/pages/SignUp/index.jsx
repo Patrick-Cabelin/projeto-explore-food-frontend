@@ -21,7 +21,7 @@ function SignUp(){
                     <h2>Crie sua conta</h2>
                 <DataUser>
                     <label htmlFor="Iname">Seu nome</label>
-                    <Input type='email' id='Iname' placeholder='Exemplo: Colette Tatou'/>
+                    <Input type='txt' id='Iname' placeholder='Exemplo: Colette Tatou'/>
                     <label htmlFor="Iemail">Email</label>
                     <Input type='email' id='Iemail' placeholder='Exemplo@exemplo.com'/>
                     <label htmlFor="Ipassword">Senha</label>
