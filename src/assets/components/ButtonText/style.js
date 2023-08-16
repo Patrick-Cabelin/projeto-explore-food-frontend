@@ -17,6 +17,7 @@ const Container = styled.button`
     font:  ${({ theme }) => theme.FONTS.POPPINS_300_BOLD};
 
     &:hover {
-        filter: brightness(0.9);
+        filter: brightness(0.8);
+        text-decoration: underline;
     }
 `

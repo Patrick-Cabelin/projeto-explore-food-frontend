@@ -1,4 +1,4 @@
-import { Container } from "./style"
+import { Container, DataUser } from "./style"
 
 import {Button} from '../../components/Button'
 import {ButtonText} from '../../components/ButtonText'
@@ -13,16 +13,18 @@ function SignIn(){
                 <Logo/>
                 <h1>Food Explore</h1>
             </div>
+            <div>
+                    <h2>Faça login</h2>
+                <DataUser>
+                    <label htmlFor="Iemail">Email</label>
+                    <Input type='email' id='Iemail' placeholder='Exemplo@exemplo.com'/>
+                    <label htmlFor="Ipassword">Senha</label>
+                    <Input type='password' id='Ipassword' placeholder='No mínimo 6 caracteres'/>
+                </DataUser>
+                <Button title={'Entrar'} orderNumber={false}/>
 
-            <dataUser>
-                <label htmlFor="Iemail">Email</label>
-                <Input type='email' id='Iemail' placeholder='Exemplo@exemplo.com'/>
-                <label htmlFor="Ipassword">Senha</label>
-                <Input type='password' id='Ipassword' placeholder='No mínimo 6 caracteres'/>
-            </dataUser>
-            <Button title={'Entrar'}/>
-
-            <ButtonText title={'Criar uma conta'}/>
+                <ButtonText title={'Criar uma conta'}/>
+            </div>
         </Container>
     )
 }
