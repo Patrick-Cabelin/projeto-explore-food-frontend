@@ -4,21 +4,24 @@ export { Container };
 
 const Container = styled.div`
   width: 100%;
+  background: ${({ theme }) => theme.COLORS.DARK_900};
+  
   display: none;
+  padding: 1.2rem 1.4rem;
+  border-radius: .5rem;
+
 
   input{
-    width: 100%;
+    width: 25rem;
     height: 5.6rem;
 
     font-size: 1.6rem;
     color: ${({ theme }) => theme.COLORS.GRAY_100};
-    
-    background: ${({ theme }) => theme.COLORS.GRAY_300};
+    background: none;
     
     border:none;
     border-radius: 1rem;
-    
-    padding: 1.9rem 2.4rem;
+    text-align: center;
   
     &placeholder{
         color:${({ theme }) => theme.COLORS.GRAY_100};
@@ -32,6 +35,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1.4rem
 
     input{
       /* background-color: red; */

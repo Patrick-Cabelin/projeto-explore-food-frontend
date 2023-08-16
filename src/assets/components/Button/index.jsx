@@ -1,6 +1,10 @@
 import { Conteiner } from './style';
 
 function Button({title, loading = false ,icon: Icon,...rest}){
+    if(rest.orderNumber){
+        console.log(rest.orderNumber)
+    }
+
     return(
        <Conteiner
        type='button'

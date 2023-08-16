@@ -30,7 +30,7 @@ const Conteiner = styled.button`
   span:last-child{
     position: absolute;
     top: 0.7rem;
-    left: 3.3rem;
+    left: 5.1rem;
     width: 2rem;
     height: 2rem;
 

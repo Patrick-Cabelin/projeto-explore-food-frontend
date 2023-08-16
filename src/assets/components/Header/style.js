@@ -21,10 +21,9 @@ const  Container = styled.header`
         font: ${({theme})=> theme.FONTS.ROBOTO_BIG_BOLD};    
         color: ${({theme})=> theme.COLORS.LIGHT_100};
         display: flex;
-        flex-direction: row;
         justify-content: center;
-        align-items: center;
-        gap: 1rem;
+        align-items: baseline;
+        gap: .8rem;
     }
 
     span{
@@ -32,24 +31,45 @@ const  Container = styled.header`
         color: ${({theme})=> theme.COLORS.CAKE_200};
     }
 
+    div:nth-child(2){
+        display: flex;
+        gap: .8rem;
+
+    }    
+
+    div:last-child{
+        display: none;
+    }
     
     @media (min-width: 769px) {
+        justify-content: center;
+        gap: 3.2rem;
+
+        h1{
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+        }
         div:nth-child(2){
             display: flex;
             gap: 1rem;
-            align-items: center;
-            width: 30rem;
+            align-items: flex-start;
             justify-content: center;
         }
         > div:first-child{
-         display: none;
+            display: none;
         }
 
-        > div{
-            width: 21.6rem;
+        > div:nth-child(3){
+            width: 58.1rem;
+            height: 4.8rem;
             svg{
                 display: block;
             }
+        }
+
+        div:last-child{
+            display: block;
         }
     }
 `
