@@ -49,7 +49,10 @@ const Container = styled.div`
         flex-direction: column;
         align-items: center;
     }
-
+    
+    label:nth-child(3) + div{
+        margin-bottom: 3.2rem;
+    }
 
     @media (min-width: 769px) {
         flex-direction: row;
