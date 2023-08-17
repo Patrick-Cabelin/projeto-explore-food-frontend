@@ -3,10 +3,11 @@ import { Container, DataUser } from "./style"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
-import {Button} from '../../components/Button'
-import {ButtonText} from '../../components/ButtonText'
-import {Input} from '../../components/Input'
-import {Icons} from '../../image/Icons'
+import { Button } from '../../components/Button'
+import { ButtonText } from '../../components/ButtonText'
+import { Input } from '../../components/Input'
+import { Icons } from '../../image/Icons'
+import { api } from '../../../services/api'
 
 function SignUp(){
     const {Logo} = Icons()
@@ -20,6 +21,11 @@ function SignUp(){
         navigate(-1)
     }
 
+    function register(){
+        console.log({name, email, password})
+        api.post('/user', {name, email, password})
+        // alert('Conta criada com sucesso')
+    }
     return(
         <Container>
             <div>
@@ -36,7 +42,7 @@ function SignUp(){
                     <label htmlFor="Ipassword">Senha</label>
                     <Input type='password' id='Ipassword' placeholder='No mínimo 6 caracteres' onChange={(event)=>setPassword(event.target.value)}/>
                 </DataUser>
-                <Button title={'Criar conta'} orderNumber={false} onClick={()=>{console.log(name, email, password)}}/>
+                <Button title={'Criar conta'} orderNumber={false} onClick={register}/>
 
                 <ButtonText title={'Já tenho uma conta'} onClick={handleBack}/>
             </div>

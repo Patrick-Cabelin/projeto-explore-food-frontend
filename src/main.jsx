@@ -7,14 +7,16 @@ import { ThemeProvider } from 'styled-components'
 import theme from './assets/theme/theme'
 
 import { Routes } from './routes'
-// import { Home } from '../src/assets/pages/Home'
+import { AuthProvider } from '../src/hooks/auth'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     
     <ThemeProvider theme={theme}>
     <GlobalStyle/>
+    <AuthProvider>
       <Routes />
+    </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
 )
