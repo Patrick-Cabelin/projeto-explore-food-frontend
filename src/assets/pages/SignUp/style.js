@@ -90,6 +90,7 @@ const DataUser = styled.form`
     label{
         font: ${({theme})=>theme.FONTS.ROBOTO_SMALL_REGULAR};
         color: ${({theme})=> theme.COLORS.LIGHT_400};
+        margin-bottom: .8rem;
     }
 
     label ~ div{

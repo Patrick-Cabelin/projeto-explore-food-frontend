@@ -1,6 +1,6 @@
 import { Conteiner } from './style';
 
-function Button({title, loading = false ,icon: Icon,...rest}){
+function Button({title, loading = false, icon: Icon, orderNumber = false,...rest}){
     // const order = rest.orderNumber
     return(
        <Conteiner

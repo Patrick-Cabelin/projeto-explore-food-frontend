@@ -22,9 +22,9 @@ function SignUp(){
     }
 
     function register(){
-        console.log({name, email, password})
-        api.post('/user', {name, email, password})
-        // alert('Conta criada com sucesso')
+        api.post('/users', {name, email, password})
+        console.log()
+        
     }
     return(
         <Container>
@@ -37,12 +37,14 @@ function SignUp(){
                 <DataUser>
                     <label htmlFor="Iname">Seu nome</label>
                     <Input type='txt' id='Iname' placeholder='Exemplo: Colette Tatou' onChange={(event)=>setName(event.target.value)}/>
+
                     <label htmlFor="Iemail">Email</label>
                     <Input type='email' id='Iemail' placeholder='Exemplo@exemplo.com' onChange={(event)=>setEmail(event.target.value)}/>
+
                     <label htmlFor="Ipassword">Senha</label>
                     <Input type='password' id='Ipassword' placeholder='No mínimo 6 caracteres' onChange={(event)=>setPassword(event.target.value)}/>
                 </DataUser>
-                <Button title={'Criar conta'} orderNumber={false} onClick={register}/>
+                <Button title={'Criar conta'} onClick={register}/>
 
                 <ButtonText title={'Já tenho uma conta'} onClick={handleBack}/>
             </div>

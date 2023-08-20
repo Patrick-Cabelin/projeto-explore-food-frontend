@@ -6,14 +6,14 @@ const Container = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.COLORS.DARK_900};
   
-  padding: 1.2rem 1.4rem;
   border-radius: .5rem;
-
+  
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
   input{
+    padding: 1.2rem 1.4rem;
     width: 100%;
     height: 4.8rem;
 
