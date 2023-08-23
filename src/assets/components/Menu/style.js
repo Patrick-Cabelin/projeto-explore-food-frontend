@@ -44,6 +44,11 @@ const Navigate= styled.div`
         border-bottom: .1rem solid ${({theme})=> theme.COLORS.DARK_1000};
     }
 
+    svg{
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+
 `
 
 

@@ -1,12 +1,12 @@
 import { Container } from './style'
 
-import { Menu } from '../../components/Menu/Index'
+import { DishCard } from '../../components/DishCard/index'
 
 function Home(){
 
     return(
         <Container>
-            <Menu/>
+            <DishCard/>
         </Container>
     )
 }
