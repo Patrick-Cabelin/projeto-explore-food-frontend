@@ -36,7 +36,7 @@ const Navigate= styled.div`
     align-items: flex-start;
     gap: 3.6rem;
 
-    > span{
+    > button{
         padding: 1rem;
         width: 100%;
         color: ${({theme})=> theme.COLORS.LIGHT_300};;

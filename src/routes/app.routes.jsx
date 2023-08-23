@@ -1,8 +1,8 @@
 import { useRoutes } from "react-router-dom";
 
-import {Home} from '../assets/pages/Home/Index'
-import {MoviePreview} from '../assets/pages/MoviePreview/Index'
-import {NewMovie} from '../assets/pages/NewMovie/Index'
+import {Home} from '../assets/pages/Home'
+import {MoviePreview} from '../assets/pages/MoviePreview'
+import {NewMovie} from '../assets/pages/NewMovie'
 
 
 function AppRoutes(){

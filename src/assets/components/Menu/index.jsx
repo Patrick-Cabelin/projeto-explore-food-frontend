@@ -1,7 +1,8 @@
 import { Container, Header, Navigate } from './style'
 
 import { Icons } from '../../image/Icons'
-import { Input } from '../../components/Input'
+import { Input } from '../Input'
+import { ButtonText } from '../ButtonText'
 
 function Menu(){
     const { Close, Search } = Icons()
@@ -16,7 +17,8 @@ function Menu(){
 
             <Navigate>
                 <Input icon={Search} placeholder='Busque por pratos ou ingredientes'/>
-                <span>Sair</span>
+                <ButtonText title={'Novo prato'}/>
+                <ButtonText title={'Sair'}/>
             </Navigate>
         </Container>
     )
