@@ -11,7 +11,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   input{
     padding: 1.2rem 1.4rem;
     width: 100%;
@@ -34,7 +34,13 @@ const Container = styled.div`
       &:focus{
         outline: .1rem solid ${({ theme }) => theme.COLORS.LIGHT_500};
       }
+
   }
+
+  svg{
+    margin: 1.2rem 1.4rem;
+  }
+
   @media (min-width: 769px) {
     display: flex;
     align-items: center;

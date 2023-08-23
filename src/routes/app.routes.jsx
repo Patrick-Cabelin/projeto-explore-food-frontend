@@ -1,9 +1,9 @@
 import { useRoutes } from "react-router-dom";
 
-import {Home} from '../assets/pages/Home/index'
-import {MoviePreview} from '../assets/pages/MoviePreview/index'
-import {NewMovie} from '../assets/pages/NewMovie/index'
-import {Profile} from '../assets/pages/Profile/Index'
+import {Home} from '../assets/pages/Home/Index'
+import {MoviePreview} from '../assets/pages/MoviePreview/Index'
+import {NewMovie} from '../assets/pages/NewMovie/Index'
+
 
 function AppRoutes(){
    const appRoute = useRoutes([
@@ -18,11 +18,7 @@ function AppRoutes(){
     {
         path:'/newmovie' ,
         element: <NewMovie/>, 
-    },
-    {
-        path:'/profile',
-        element: <Profile/>
-    },
+    }
    ]) 
     return appRoute
 }
