@@ -4,8 +4,7 @@ import { Input } from '../Input'
 import { Button } from '../Button'
 
 import {Icons} from '../../image/Icons'
- 
-export{ Header } 
+
 function Header(){
     const {Menu, Receipt, SignOut, Logo, Search} = Icons()
     return(
@@ -26,3 +25,5 @@ function Header(){
         </Container>
     )
 }
+
+export{ Header }

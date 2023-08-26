@@ -41,6 +41,10 @@ const  Container = styled.header`
         display: none;
     }
     
+    div+div{
+        display: none;
+    }
+
     @media (min-width: 769px) {
         justify-content: center;
         gap: 3.2rem;
@@ -64,6 +68,13 @@ const  Container = styled.header`
             width: 58.1rem;
             height: 4.8rem;
             svg{
+                display: block;
+            }
+        }
+
+        div + div{
+            display: block;
+            >input{
                 display: block;
             }
         }

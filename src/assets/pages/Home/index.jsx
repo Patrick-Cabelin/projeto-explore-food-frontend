@@ -6,7 +6,7 @@ function Home(){
 
     return(
         <Container>
-            <Menu/>
+            {/* <Menu/> */}
         </Container>
     )
 }

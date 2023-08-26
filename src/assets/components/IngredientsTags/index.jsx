@@ -1,11 +1,11 @@
 import { Container }from './style'
 
-export {Tag}
 
-function Tag({title, ...rest}){
+function IngredientsTags({title, ...rest}){
     return(
         <Container {...rest}>
             {title}
         </Container>
     )
 }
+export {IngredientsTags}

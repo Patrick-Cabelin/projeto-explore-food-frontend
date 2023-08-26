@@ -2,7 +2,7 @@ import { useRoutes } from "react-router-dom";
 
 import {Home} from '../assets/pages/Home'
 import {MoviePreview} from '../assets/pages/MoviePreview'
-import {NewMovie} from '../assets/pages/NewMovie'
+import {NewDish} from '../assets/pages/NewDish'
 
 
 function AppRoutes(){
@@ -16,8 +16,8 @@ function AppRoutes(){
         element:<MoviePreview/> , 
     },
     {
-        path:'/newmovie' ,
-        element: <NewMovie/>, 
+        path:'/NewDish' ,
+        element: <NewDish/>, 
     }
    ]) 
     return appRoute
