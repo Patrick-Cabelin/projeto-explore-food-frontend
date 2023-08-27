@@ -10,7 +10,7 @@ import { DishIngredients } from '../../components/DishIngredients'
 import { TextArea } from '../../components/TextArea'
 import { Footer } from '../../components/Footer'
 
-function NewDish(){
+function EditDish(){
         const {Upload, CareLeft} = Icons()
     return(
         <Container>
@@ -18,13 +18,13 @@ function NewDish(){
 
             <Content>
                 <ButtonText title={'Voltar'} icon={CareLeft}/>
-                <h1>Novo prato</h1>
+                <h1>Editar prato</h1>
                 <DishInfo>
                     <div>
                         <label htmlFor='IdishImage'>Imagem do prato
                             <div>
                                 <Upload/>
-                                Selecionar Imagem
+                                Selecione imagem para alterá-la
                                 <Input type='file' id='IdishImage'/>
                             </div>
                         </label>
@@ -55,6 +55,7 @@ function NewDish(){
                         <TextArea id='Idescription' placeholder='Fale brevemente sobre o prato, seus ingredientes e composição'/>
                     </div>
 
+                    <Button title={'Excluir Prato'} />
                     <Button title={'Adicionar'} />
                 </DishInfo>
             </Content>
@@ -64,4 +65,4 @@ function NewDish(){
 }
 
 
-export {NewDish}
+export {EditDish}

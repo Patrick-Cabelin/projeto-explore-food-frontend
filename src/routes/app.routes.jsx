@@ -1,8 +1,9 @@
 import { useRoutes } from "react-router-dom";
 
 import {Home} from '../assets/pages/Home'
-import {MoviePreview} from '../assets/pages/MoviePreview'
+import {DishPreview} from '../assets/pages/DishPreview'
 import {NewDish} from '../assets/pages/NewDish'
+import {EditDish} from '../assets/pages/EditDish'
 
 
 function AppRoutes(){
@@ -13,11 +14,15 @@ function AppRoutes(){
     },
     {
         path:'/preview/:id' ,
-        element:<MoviePreview/> , 
+        element:<DishPreview/> , 
     },
     {
-        path:'/NewDish' ,
+        path:'/newdish' ,
         element: <NewDish/>, 
+    },
+    {
+        path:'/editdish' ,
+        element: <EditDish/>, 
     }
    ]) 
     return appRoute

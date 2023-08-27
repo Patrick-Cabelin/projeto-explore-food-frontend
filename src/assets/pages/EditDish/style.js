@@ -60,12 +60,14 @@ const DishInfo = styled.form`
                 
                 background: ${({theme})=> theme.COLORS.DARK_800};
                 border-radius: .8rem;
-                height: 4.8rem;
-                padding: 1.2rem 3.2rem;
-                margin-top: 1.6rem;
                 
+                height: 4.8rem;
+                margin-top: 1.6rem;
+                padding: 1.2rem 3.2rem;
+
                 font: ${({theme})=> theme.FONTS.POPPINS_100_MEDIUM};
                 color: ${({theme})=> theme.COLORS.LIGHT_100};
+            
             input{
                 display: none;
             }

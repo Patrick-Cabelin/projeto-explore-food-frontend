@@ -1,6 +1,4 @@
-import styled from "styled-components"
-
-export{Container}
+import styled from 'styled-components'
 
 const  Container = styled.header`
     grid-area: header;
@@ -83,3 +81,5 @@ const  Container = styled.header`
         }
     }
 `
+
+export{Container}
