@@ -1,4 +1,4 @@
-import {Container,Content, IngredientsDish} from './style'
+import {Container,Content, IngredientsDish, QuantyController} from './style'
 
 import { Icons } from '../../image/Icons'
 
@@ -9,10 +9,11 @@ import { Footer } from '../../components/Footer'
 
 import exemplo from '/exemplo.svg'
 function DishPreview(){
-    const {CareLeft} = Icons()
+    const {CareLeft, Minus, Plus, Receipt} = Icons()
     return(
         <Container>
             <Header/>
+
             <Content>
                 <ButtonText title={'voltar'} icon={CareLeft}/>
                 <img src={exemplo} alt={`imagem do prato ${'salada'}`} />
@@ -34,13 +35,14 @@ function DishPreview(){
                 <div>
                     <QuantyController>
                         <Minus/>
-                        <span>1</span>
+                        <span>{10}</span>
                         <Plus/>
                     </QuantyController>
 
-                    <Button title={`pedir ∙ R$ ${25.00}`}/>
+                    <Button icon={ Receipt } title={`pedir ∙ R$ ${25.99}`}/>
                 </div>
             </Content>
+            
             <Footer/>
         </Container>
     )

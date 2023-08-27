@@ -18,6 +18,7 @@ const Conteiner = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: .7rem;
 
     
     svg{
