@@ -3,7 +3,6 @@ import styled from "styled-components";
 export { Container };
 
 const Container = styled.div`
-  width: 100%;
   background: ${({ theme }) => theme.COLORS.DARK_900};
   
   border-radius: .5rem;

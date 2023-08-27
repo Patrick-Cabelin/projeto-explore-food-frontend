@@ -6,9 +6,8 @@ const  Container = styled.header`
     grid-area: header;
 
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    gap: 6.4rem;
+    gap: 8rem;
 
     width: 100%;
     height: 11.4rem;

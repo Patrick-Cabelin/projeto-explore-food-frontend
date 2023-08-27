@@ -25,9 +25,13 @@ const Conteiner = styled.div`
       height: 3.2rem;
     }
 
-    span:nth-child(2){
+    span{
+        font: ${({theme}) => theme.FONTS.POPPINS_100_MEDIUM};
+        color: ${({theme}) => theme.COLORS.LIGHT_100 };
+      }
+    /* span:nth-child(2){
       display: none;
-    }
+    } */
 
     /* span:last-child{
       position: absolute;
@@ -54,11 +58,6 @@ const Conteiner = styled.div`
       background: ${({theme}) => theme.COLORS.TOMATO_100 }; 
       gap: .8rem;
       
-      span:nth-child(2){
-        display: inline-flex;
-        font: ${({theme}) => theme.FONTS.POPPINS_100_MEDIUM};
-        color: ${({theme}) => theme.COLORS.LIGHT_100 };
-      }
       
       /* span:last-child::before{
         content: '(';

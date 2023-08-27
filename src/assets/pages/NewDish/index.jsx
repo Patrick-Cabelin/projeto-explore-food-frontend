@@ -1,20 +1,23 @@
 import {Container,Content, DishInfo} from './style'
 
+import { Icons } from '../../image/Icons'
+
 import { Header } from '../../components/Header'
 import { ButtonText } from '../../components/ButtonText'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import { DishIngredients } from '../../components/DishIngredients'
-import { Icons } from '../../image/Icons'
+import { TextArea } from '../../components/TextArea'
+
 
 function NewDish(){
-        const {Upload} = Icons()
+        const {Upload, CareLeft} = Icons()
     return(
         <Container>
             <Header/>
 
             <Content>
-                <ButtonText title={'Voltar'}/>
+                <ButtonText title={'Voltar'} icon={CareLeft}/>
                 <h1>Novo prato</h1>
                 <DishInfo>
                     <div>
@@ -30,7 +33,7 @@ function NewDish(){
                         <Input type='text' id='Iname' placeholder={'Ex.: Salada Ceasar'} />
 
 
-                        <label htmlFor='Icategory'>REFEIÇÂO</label>
+                        <label htmlFor='Icategory'>Categoria</label>
                         <select id='Icategory'>
                             <option value='opcao1'>Opção 1</option>
                             <option value='opcao2'>Opção 2</option>
@@ -49,10 +52,10 @@ function NewDish(){
 
                     <div>
                         <label htmlFor='Idescription'>Descrição</label>
-                        <Input type='textarea' placeholder={'Fale brevemente sobre o prato, seus ingredientes e composição'} />
+                        <TextArea id='Idescription' placeholder='Fale brevemente sobre o prato, seus ingredientes e composição'/>
                     </div>
 
-                    <Button title={'Adicionar'}/>
+                    <Button title={'Adicionar'} />
                 </DishInfo>
             </Content>
         <footer>fuuter</footer>
