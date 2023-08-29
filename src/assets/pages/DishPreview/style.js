@@ -17,7 +17,7 @@ const Container = styled.div`
             margin: auto;
         }
 
-        `
+`
 const Content= styled.main`
     grid-area:content;
     margin: 1.6rem auto;

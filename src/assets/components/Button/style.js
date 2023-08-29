@@ -4,6 +4,15 @@ export { Conteiner };
 
 const Conteiner = styled.div`
   
+  .portrait{
+    background-color: green;
+  }
+  
+  .landscap{
+    background-color: yellow;
+    
+  }
+    
   button{
     width: 100%;
     height: 5.6rem;
@@ -19,17 +28,17 @@ const Conteiner = styled.div`
     align-items: center;
     justify-content: center;
     gap: .7rem;
-
-    
     svg{
       width: 3.2rem;
       height: 3.2rem;
     }
-
+    
     span{
-        font: ${({theme}) => theme.FONTS.POPPINS_100_MEDIUM};
-        color: ${({theme}) => theme.COLORS.LIGHT_100 };
-      }
+      font: ${({theme}) => theme.FONTS.POPPINS_100_MEDIUM};
+      color: ${({theme}) => theme.COLORS.LIGHT_100 };
+    }
+        
+
     /* span:nth-child(2){
       display: none;
     } */

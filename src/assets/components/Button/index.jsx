@@ -1,15 +1,16 @@
 import { Conteiner } from './style';
 
-function Button({title, loading = false, icon: Icon, orderNumber = false,...rest}){
-    // const order = rest.orderNumber
+function Button({title, disabled = false, icon: Icon, orderNumber = false, className,...rest}){
+
     return(
        <Conteiner
             {...rest}
-            disabled = {loading}
+            className={className}
+            disabled = {disabled}
        >
-        <button>
+        <button  className={className}>
             {Icon &&<Icon size={20}/>}
-            <span>{title}</span>{/*<span classname='order'>{order}</span>*/}</button>
+            <span>{title}</span><span className='order'>{orderNumber}</span></button>
        </Conteiner>
     )
 }

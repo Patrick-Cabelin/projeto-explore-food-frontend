@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 const Container = styled.footer`
     grid-area: footer;
     height: 7.7rem;
+    margin-top: 2.5rem;
     
     display: flex;
     justify-content: center;

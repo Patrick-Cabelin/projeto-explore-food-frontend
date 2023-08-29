@@ -13,7 +13,9 @@ const  Container = styled.header`
 
     background: ${({theme})=> theme.COLORS.DARK_700};
 
-    
+    svg{
+        fill:${({theme})=> theme.COLORS.CAKE_100} ;
+    }
     h1{
         font: ${({theme})=> theme.FONTS.ROBOTO_BIG_BOLD};    
         color: ${({theme})=> theme.COLORS.LIGHT_100};
@@ -28,23 +30,34 @@ const  Container = styled.header`
         color: ${({theme})=> theme.COLORS.CAKE_200};
     }
 
-    div:nth-child(2){
+    > div:nth-child(2){
         display: flex;
         gap: .8rem;
 
-    }    
-
-    div:last-child{
-        display: none;
     }
-    
-    div+div{
+
+    > div:nth-child(3){
         display: none;
     }
 
+    > div:last-child{
+        display: none;
+    }
+
+    .landscape{
+        display: none;
+    }
+
+    .portrait{
+            display: none;
+        }
     @media (min-width: 769px) {
         justify-content: center;
         gap: 3.2rem;
+
+        .portrait{
+            display: none;
+        }
 
         h1{
             flex-direction: column;
