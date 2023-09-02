@@ -5,39 +5,41 @@ const Container = styled.div`
     display: flex;
     align-items: center;
 
-    background: ${({theme,isNew})=> isNew? 'transparent' : theme.COLORS.BACKGROUND_900};
-    color: ${({theme})=> theme.COLORS.GRAY_300};
+    background: ${({theme,isNew})=> isNew? 'transparent' : theme.COLORS.LIGHT_600};
+    color: ${({theme})=> theme.COLORS.LIGHT_100};
 
-    border: ${({theme, isNew})=> isNew? `1px dashed ${theme.COLORS.GRAY_300}`: 'none'};
-    border-radius: 10px;
+    border: ${({theme, isNew})=> isNew? `.1rem dashed ${theme.COLORS.LIGHT_500}`: 'none'};
+    border-radius: 1rem;
 
-    margin-bottom: 8px;
-    padding-right: 16px;
-
+    margin-bottom: .8rem;
+    padding-right: 1.6rem;
+    width: 11.6rem;
+    
     >button{
         border: none;
         background: none;
+        cursor: pointer;
     }
     .button-add{
-        color: ${({theme})=> theme.COLORS.RED}
+        color: ${({theme})=> theme.COLORS.LIGHT_500}
     }
     .button-delete{
-        color: ${({theme})=> theme.COLORS.ORANGE}
+        color: ${({theme})=> theme.COLORS.LIGHT_100}
     }
 
     >input{
         width: 100%;
-        height: 56px;
+        height: 5.6rem;
 
-        padding: 12px;
+        padding: 1.2rem;
         
-        color: ${({theme})=> theme.COLORS.WHITE};
+        color: ${({theme})=> theme.COLORS.LIGHT_100};
         background: transparent;
         
         border: none;
         
         &::placeholder{
-            color:${({theme})=> theme.COLORS.GRAY_300}
+            color:${({theme})=> theme.COLORS.LIGHT_500}
         }
     }
 `

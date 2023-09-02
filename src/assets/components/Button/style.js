@@ -4,16 +4,31 @@ export { Conteiner };
 
 const Conteiner = styled.div`
   
-  .portrait{
-    background-color: green;
+  .version_mobile{
+    width: 3.7rem;
+    height: 3.7rem;
+
+    svg{
+      width: 3.7rem;
+      height: 3.7rem;
+    }
+    background: none;
+
+    .order{
+      position: absolute;
+      top: -0.6rem;
+      left: 3.4rem;
+      width: 2.5rem;
+      height: 2.1rem; 
+
+      border-radius: 50%;
+
+      background: ${({theme}) => theme.COLORS.TOMATO_100 };
+      color: ${({theme}) => theme.COLORS.LIGHT_100 };
+    }
   }
   
-  .landscap{
-    background-color: yellow;
-    
-  }
-    
-  button{
+  .version_desktop, button{
     width: 100%;
     height: 5.6rem;
     position: relative;
@@ -28,6 +43,7 @@ const Conteiner = styled.div`
     align-items: center;
     justify-content: center;
     gap: .7rem;
+    
     svg{
       width: 3.2rem;
       height: 3.2rem;
@@ -37,26 +53,6 @@ const Conteiner = styled.div`
       font: ${({theme}) => theme.FONTS.POPPINS_100_MEDIUM};
       color: ${({theme}) => theme.COLORS.LIGHT_100 };
     }
-        
-
-    /* span:nth-child(2){
-      display: none;
-    } */
-
-    /* span:last-child{
-      position: absolute;
-      top: 0.7rem;
-      left: 5.1rem;
-      width: 2rem;
-      height: 2rem;
-
-      border-radius: 50%;
-
-      background: ${({theme}) => theme.COLORS.TOMATO_200 };
-      color: ${({theme}) => theme.COLORS.LIGHT_100 };
-    
-    } */
-    
 
     &:disabled{
       background: ${({theme}) => theme.COLORS.TOMATO_400 };
@@ -67,23 +63,13 @@ const Conteiner = styled.div`
     @media (min-width: 769px) {
       background: ${({theme}) => theme.COLORS.TOMATO_100 }; 
       gap: .8rem;
-      
-      
-      /* span:last-child::before{
-        content: '(';
-      }
-       */
+
       span:last-child{
         display: flex;
         position: initial;
         background: none;
         font: ${({theme}) => theme.FONTS.POPPINS_100_MEDIUM};
       }
-
-      /* span:last-child::after{
-        content: ')';
-      } */
-      
 
       &:hover{
       background: ${({theme}) => theme.COLORS.TOMATO_200 };

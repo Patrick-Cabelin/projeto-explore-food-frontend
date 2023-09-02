@@ -5,7 +5,7 @@ const  Container = styled.header`
 
     display: flex;
     align-items: center;
-    gap: 8rem;
+    justify-content: space-around;
 
     width: 100%;
     height: 11.4rem;
@@ -13,9 +13,6 @@ const  Container = styled.header`
 
     background: ${({theme})=> theme.COLORS.DARK_700};
 
-    svg{
-        fill:${({theme})=> theme.COLORS.CAKE_100} ;
-    }
     h1{
         font: ${({theme})=> theme.FONTS.ROBOTO_BIG_BOLD};    
         color: ${({theme})=> theme.COLORS.LIGHT_100};
@@ -44,19 +41,24 @@ const  Container = styled.header`
         display: none;
     }
 
-    .landscape{
+    .version_mobile{
+        display: flex;
+    }
+
+    .version_desktop{
         display: none;
     }
 
-    .portrait{
-            display: none;
-        }
     @media (min-width: 769px) {
         justify-content: center;
         gap: 3.2rem;
 
-        .portrait{
+        .version_mobile{
             display: none;
+        }
+
+        .version_desktop{
+            display: flex;
         }
 
         h1{
@@ -75,19 +77,10 @@ const  Container = styled.header`
         }
 
         > div:nth-child(3){
-            width: 58.1rem;
-            height: 4.8rem;
-            svg{
-                display: block;
-            }
+            display: flex;
+            width: 58rem;
         }
 
-        div + div{
-            display: block;
-            >input{
-                display: block;
-            }
-        }
 
         div:last-child{
             display: block;

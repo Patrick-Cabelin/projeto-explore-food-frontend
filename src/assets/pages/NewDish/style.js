@@ -100,6 +100,13 @@ const DishInfo = styled.form`
         }
     }
 
+    #Iingredients{
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        flex-wrap: wrap;
+    }
+
     > div:nth-child(3){
         display: flex;
         flex-direction: column;

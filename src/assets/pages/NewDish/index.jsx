@@ -1,6 +1,8 @@
 import {Container,Content, DishInfo} from './style'
-
 import { Icons } from '../../image/Icons'
+
+import { useState } from 'react'
+
 
 import { Header } from '../../components/Header'
 import { ButtonText } from '../../components/ButtonText'
@@ -12,6 +14,8 @@ import { Footer } from '../../components/Footer'
 
 function NewDish(){
         const {Upload, CareLeft} = Icons()
+        const [listIngredients, setListIngredients] = useState([1,2,3,4,5,6,7,8])
+
     return(
         <Container>
             <Header/>
@@ -43,7 +47,24 @@ function NewDish(){
 
                     <div>
                         <label htmlFor='Iingredients'>Ingredientes</label>
-                        <DishIngredients/>
+                        <div id='Iingredients'>
+                            {
+                                listIngredients && listIngredients.map((ingredient, index) =>(
+                                    <DishIngredients
+                                        key={String(index)}
+                                        value={ingredient}
+                                        onClick={()=>{}}
+                                    />
+                                ))
+                            }
+                            <DishIngredients
+                                isNew
+                                placeholder='Novo link'
+                                value={''}
+                                onChange={e => setListIngredients(e.target.value)}
+                                onClick={()=>{}}
+                            />
+                        </div>
 
                         <label htmlFor='Iprice'>Preço</label>
                         <Input type='number' placeholder={'R$ 99,99'} />

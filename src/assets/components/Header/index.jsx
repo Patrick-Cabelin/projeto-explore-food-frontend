@@ -7,12 +7,13 @@ import {Icons} from '../../image/Icons'
 
 function Header(){
     const user={
-        admin: false
+        admin: true
     }
+
     const {Menu, Receipt, SignOut, Logo, Search} = Icons()
     return(
         <Container>
-            <Menu onClick={()=>{console.log('voltou')}}/>
+            <Menu onClick={()=>{}}/>
 
             <div>
                 <Logo/>
@@ -22,8 +23,8 @@ function Header(){
             <Input type="text" placeholder={'Busque por pratos ou ingredientes'} icon={Search}/>
 
             <div>
-                <Button orderNumber={23} icon={Receipt} className='portrait'/>
-                <Button title={`Pedidos`} orderNumber={23} icon={Receipt} className='landscape'/>
+                <Button orderNumber={23} icon={Receipt} className='version_mobile'/>
+                <Button title={`Pedidos`} orderNumber={23} icon={Receipt} className='version_desktop'/>
             </div>
             <SignOut/>
         </Container>
