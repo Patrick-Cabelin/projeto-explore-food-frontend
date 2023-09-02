@@ -2,11 +2,50 @@ import {Container, Content, Menu} from './style'
 
 import { Header } from '../../components/Header'
 import { DishCard } from '../../components/DishCard'
+import { DishCarousel } from '../../components/DishCarousel'
 import { Footer } from '../../components/Footer'
 
 import sugar from '/sugar.svg'
+import { useState } from 'react'
 
 function Home(){
+    const [t, setT] = useState([{
+        title: 1,
+        description: 2,
+        price: 3
+    },{
+        title: 2,
+        description: 2,
+        price: 3
+    },{
+        title: 13,
+        description: 2,
+        price: 3
+    },{
+        title: 14,
+        description: 2,
+        price: 3
+    },{
+        title: 15,
+        description: 2,
+        price: 3
+    },{
+        title: 16,
+        description: 2,
+        price: 3
+    },{
+        title: 51,
+        description: 2,
+        price: 3
+    },{
+        title: 14,
+        description: 2,
+        price: 33
+    },{
+        title: 13,
+        description: 232,
+        price: 3
+    },])
     return(
         <Container>
             <Header/>
@@ -23,15 +62,18 @@ function Home(){
                 <Menu>
                     <h2>Pratos principais</h2>
 
-                    <div>
-                        <DishCard title={'1'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'2'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'3'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'4'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'5'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'6'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'7'} description={'aiai'} price={35.99}/>
-                    </div>
+                    <DishCarousel>
+                        
+                        {
+                            t && t.map(t =>{
+                                <DishCard
+                                title={t.title}
+                                description={t.description}
+                                price={t.price}
+                                />
+                            })
+                        }
+                    </DishCarousel>
                     
                 </Menu>
 

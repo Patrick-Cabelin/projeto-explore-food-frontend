@@ -7,7 +7,57 @@ const Container = styled.div`
         'header'
         'content'
         'footer'
-        ;
+    ;
+
+    @media (min-width: 769px) {
+        main{
+            width: 116rem;
+
+            form{
+                align-items: flex-end;
+
+                > div{
+                    width: 100%;
+                }
+
+                > div:first-child{
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 3.2rem;
+
+                    div:nth-child(1){
+                        flex: .5;
+                    }
+                    div:nth-child(2){
+                        flex: 1;
+                    }
+                    div:nth-child(3){
+                        flex: .5;
+                    }
+
+                }
+
+                > div:nth-child(2){
+                    flex-direction: row;
+                    gap: 3.2rem;
+
+                    > div:nth-child(1){
+                        flex: 1.5;
+                    }
+                    
+                    > div:nth-child(2){
+                        flex: .5;
+                    }
+                }
+
+                > div:last-child{
+                    width: 17.2rem;
+                } 
+            
+            }
+            
+        }
+    }
 `
 const Content = styled.main`
     grid-area: content;
@@ -34,17 +84,24 @@ const Content = styled.main`
         }
     }
 
-    `
+`
+
 const DishInfo = styled.form`
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
 
+    .info_box_wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+
+        margin-top: 2.4rem;
+    }
+
     label{
         font: ${({theme})=> theme.FONTS.ROBOTO_SMALL_REGULAR};
         color: ${({theme})=> theme.COLORS.LIGHT_400};
-
-        margin-bottom: 1.6rem;
     }
 
     > div:first-child{
@@ -52,6 +109,7 @@ const DishInfo = styled.form`
         flex-direction: column;
         
         label:first-child{
+
             > div{
                 display: flex;
                 flex-direction: row;
@@ -66,9 +124,10 @@ const DishInfo = styled.form`
                 
                 font: ${({theme})=> theme.FONTS.POPPINS_100_MEDIUM};
                 color: ${({theme})=> theme.COLORS.LIGHT_100};
-            input{
-                display: none;
-            }
+                
+                input{
+                    display: none;
+                }
            }
         }
 
@@ -86,7 +145,7 @@ const DishInfo = styled.form`
             border-radius: .5rem;
         }
         
-        label:nth-child(4){
+        #Icategory + label{
             margin-top: 1.6rem;
         }
     }
@@ -105,6 +164,7 @@ const DishInfo = styled.form`
         align-items: center;
         gap: 1.6rem;
         flex-wrap: wrap;
+        margin-bottom: 2.4rem;
     }
 
     > div:nth-child(3){

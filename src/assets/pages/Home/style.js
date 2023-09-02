@@ -8,7 +8,38 @@ const Container = styled.div`
         'header'
         'content'
         'footer'
-        ;
+    ;
+
+    @media (min-width: 769px) {
+        main{
+            width: 116rem;
+            margin: auto;
+
+            >div{
+                width: 100%;
+                height: 26rem;
+                justify-content: center;
+
+                img{
+                    left: -18rem;
+                    height: 29rem;
+                }
+
+                div{
+                    width: auto;
+
+                    h1{
+                        font: ${({theme})=> theme.FONTS.POPPINS_500_MEDIUM};
+                    }
+
+                    p{
+                        font: ${({theme})=> theme.FONTS.ROBOTO_SMALL_REGULAR};
+                    }
+                }
+            }
+        }
+
+    }
 `
 const Content = styled.main`
     grid-area: content;
@@ -23,10 +54,10 @@ const Content = styled.main`
         display: flex;
         align-items: center;
         margin-top: 4.4rem;
-
-        width: 37.6rem;
-        height: 12rem;
         
+        height: 12rem;
+        text-align: start;
+
         background: linear-gradient(to bottom, ${({theme})=> theme.COLORS.DARK_550}, ${({theme})=> theme.COLORS.DARK_650});
         border-radius: .3rem;
 
@@ -39,7 +70,7 @@ const Content = styled.main`
         div{
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             gap: .3rem;
 
@@ -78,7 +109,7 @@ const Menu = styled.section`
         
         width: 38rem;
         height: 35rem;
-        overflow-x: scroll;
+        overflow-x: auto;
 
     }
 

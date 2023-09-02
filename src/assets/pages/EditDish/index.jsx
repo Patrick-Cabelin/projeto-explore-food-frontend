@@ -9,9 +9,11 @@ import { Input } from '../../components/Input'
 import { DishIngredients } from '../../components/DishIngredients'
 import { TextArea } from '../../components/TextArea'
 import { Footer } from '../../components/Footer'
+import { useState } from 'react'
 
 function EditDish(){
         const {Upload, CareLeft} = Icons()
+        const [listIngredients, setListIngredients] = useState(['camarão',2,3,4,5,6,7,8])
     return(
         <Container>
             <Header/>
@@ -24,39 +26,66 @@ function EditDish(){
                         <label htmlFor='IdishImage'>Imagem do prato
                             <div>
                                 <Upload/>
-                                Selecione imagem para alterá-la
+                                Selecionar Imagem 
                                 <Input type='file' id='IdishImage'/>
                             </div>
                         </label>
+                        
+                        <div className='info_box_wrapper'>
+                            <label htmlFor='Iname'>Nome</label>
+                            <Input type='text' id='Iname' placeholder={'Ex.: Salada Ceasar'} />
+                        </div>
 
-                        <label htmlFor='Iname'>Nome</label>
-                        <Input type='text' id='Iname' placeholder={'Ex.: Salada Ceasar'} />
-
-
-                        <label htmlFor='Icategory'>Categoria</label>
-                        <select id='Icategory'>
-                            <option value='opcao1'>Opção 1</option>
-                            <option value='opcao2'>Opção 2</option>
-                            <option value='opcao3'>Opção 3</option>
-                        </select>
+                        <div className='info_box_wrapper'>
+                            <label htmlFor='Icategory'>Categoria</label>
+                            <select id='Icategory'>
+                                <option value='opcao1'>Opção 1</option>
+                                <option value='opcao2'>Opção 2</option>
+                                <option value='opcao3'>Opção 3</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div>
-                        <label htmlFor='Iingredients'>Ingredientes</label>
-                        <DishIngredients/>
+                        <div className='info_box_wrapper'>
+                            <label htmlFor='Iingredients'>Ingredientes</label>
+                            <div id='Iingredients'>
+                                {
+                                    listIngredients && listIngredients.map((ingredient, index) =>(
+                                        <DishIngredients
+                                            key={String(index)}
+                                            value={ingredient}
+                                            onClick={()=>{}}
+                                        />
+                                    ))
+                                }
+                                <DishIngredients
+                                    isNew
+                                    placeholder='Novo link'
+                                    value={''}
+                                    onChange={e => setListIngredients(e.target.value)}
+                                    onClick={()=>{}}
+                                />
+                            </div>
+                        </div>
 
-                        <label htmlFor='Iprice'>Preço</label>
-                        <Input type='number' placeholder={'R$ 99,99'} />
+                        <div className='info_box_wrapper'>
+                            <label htmlFor='Iprice'>Preço</label>
+                            <Input type='number' placeholder={'R$ 99,99'} />
+                        </div>
 
                     </div>
 
-                    <div>
+                    <div className='info_box_wrapper'>
                         <label htmlFor='Idescription'>Descrição</label>
                         <TextArea id='Idescription' placeholder='Fale brevemente sobre o prato, seus ingredientes e composição'/>
                     </div>
 
-                    <Button title={'Excluir Prato'} />
-                    <Button title={'Adicionar'} />
+                    <div>
+                        <Button title={'Excluir Prato'} />
+                        <Button title={'Adicionar'} />
+                    </div>
+
                 </DishInfo>
             </Content>
         <Footer/>

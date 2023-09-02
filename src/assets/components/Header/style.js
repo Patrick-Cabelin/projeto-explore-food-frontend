@@ -31,6 +31,9 @@ const  Container = styled.header`
         display: flex;
         gap: .8rem;
 
+        svg{
+            fill: ${({theme})=> theme.COLORS.CAKE_100};
+        }
     }
 
     > div:nth-child(3){
@@ -52,7 +55,7 @@ const  Container = styled.header`
     @media (min-width: 769px) {
         justify-content: center;
         gap: 3.2rem;
-
+        
         .version_mobile{
             display: none;
         }
@@ -66,6 +69,7 @@ const  Container = styled.header`
             justify-content: center;
             align-items: flex-end;
         }
+
         div:nth-child(2){
             display: flex;
             gap: 1rem;

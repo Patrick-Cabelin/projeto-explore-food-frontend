@@ -16,30 +16,34 @@ function DishPreview(){
 
             <Content>
                 <ButtonText title={'voltar'} icon={CareLeft}/>
-                <img src={exemplo} alt={`imagem do prato ${'salada'}`} />
-
+                
                 <div>
-                    <h1>Salada</h1>
-                    <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.</p>
+                    <img src={exemplo} alt={`imagem do prato ${'salada'}`} />
 
                     <div>
-                        <IngredientsDish>Alface</IngredientsDish>
-                        <IngredientsDish>Cebola</IngredientsDish>
-                        <IngredientsDish>Pão</IngredientsDish>
-                        <IngredientsDish>Pepino</IngredientsDish>
-                        <IngredientsDish>Rabanete</IngredientsDish>
-                        <IngredientsDish>Tomate</IngredientsDish>
+                        <h1>Salada</h1>
+                        <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.</p>
+
+                        <div>
+                            <IngredientsDish>Alface</IngredientsDish>
+                            <IngredientsDish>Cebola</IngredientsDish>
+                            <IngredientsDish>Pão</IngredientsDish>
+                            <IngredientsDish>Pepino</IngredientsDish>
+                            <IngredientsDish>Rabanete</IngredientsDish>
+                            <IngredientsDish>Tomate</IngredientsDish>
+                        </div>
+                    
+                        <div>
+                            <QuantyController>
+                                <Minus/>
+                                <span>{10}</span>
+                                <Plus/>
+                            </QuantyController>
+
+                            <Button icon={ Receipt } title={`pedir ∙ R$ ${25.99}`}/>
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <QuantyController>
-                        <Minus/>
-                        <span>{10}</span>
-                        <Plus/>
-                    </QuantyController>
-
-                    <Button icon={ Receipt } title={`pedir ∙ R$ ${25.99}`}/>
                 </div>
             </Content>
             

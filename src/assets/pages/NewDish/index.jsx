@@ -32,46 +32,53 @@ function NewDish(){
                                 <Input type='file' id='IdishImage'/>
                             </div>
                         </label>
-
-                        <label htmlFor='Iname'>Nome</label>
-                        <Input type='text' id='Iname' placeholder={'Ex.: Salada Ceasar'} />
-
-
-                        <label htmlFor='Icategory'>Categoria</label>
-                        <select id='Icategory'>
-                            <option value='opcao1'>Opção 1</option>
-                            <option value='opcao2'>Opção 2</option>
-                            <option value='opcao3'>Opção 3</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label htmlFor='Iingredients'>Ingredientes</label>
-                        <div id='Iingredients'>
-                            {
-                                listIngredients && listIngredients.map((ingredient, index) =>(
-                                    <DishIngredients
-                                        key={String(index)}
-                                        value={ingredient}
-                                        onClick={()=>{}}
-                                    />
-                                ))
-                            }
-                            <DishIngredients
-                                isNew
-                                placeholder='Novo link'
-                                value={''}
-                                onChange={e => setListIngredients(e.target.value)}
-                                onClick={()=>{}}
-                            />
+                        
+                        <div className='info_box_wrapper'>
+                            <label htmlFor='Iname'>Nome</label>
+                            <Input type='text' id='Iname' placeholder={'Ex.: Salada Ceasar'} />
                         </div>
 
-                        <label htmlFor='Iprice'>Preço</label>
-                        <Input type='number' placeholder={'R$ 99,99'} />
-
+                        <div className='info_box_wrapper'>
+                            <label htmlFor='Icategory'>Categoria</label>
+                            <select id='Icategory'>
+                                <option value='opcao1'>Opção 1</option>
+                                <option value='opcao2'>Opção 2</option>
+                                <option value='opcao3'>Opção 3</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div>
+                        <div className='info_box_wrapper'>
+                            <label htmlFor='Iingredients'>Ingredientes</label>
+                            <div id='Iingredients'>
+                                {
+                                    listIngredients && listIngredients.map((ingredient, index) =>(
+                                        <DishIngredients
+                                            key={String(index)}
+                                            value={ingredient}
+                                            onClick={()=>{}}
+                                        />
+                                    ))
+                                }
+                                <DishIngredients
+                                    isNew
+                                    placeholder='Novo link'
+                                    value={''}
+                                    onChange={e => setListIngredients(e.target.value)}
+                                    onClick={()=>{}}
+                                />
+                            </div>
+                        </div>
+
+                        <div className='info_box_wrapper'>
+                            <label htmlFor='Iprice'>Preço</label>
+                            <Input type='number' placeholder={'R$ 99,99'} />
+                        </div>
+
+                    </div>
+
+                    <div className='info_box_wrapper'>
                         <label htmlFor='Idescription'>Descrição</label>
                         <TextArea id='Idescription' placeholder='Fale brevemente sobre o prato, seus ingredientes e composição'/>
                     </div>

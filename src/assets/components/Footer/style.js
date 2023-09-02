@@ -23,17 +23,28 @@ const Container = styled.footer`
         align-items: center;
         gap: .7rem;
 
-        font: ${({theme})=> theme.FONTS.ROBOTO_SMALLER_BOLD};
+        font: ${({theme})=> theme.FONTS.ROBOTO_BIGGER_BOLD};
         font-size: 1rem;
         color:  ${({theme})=> theme.COLORS.LIGHT_700}
     }
 
     p:last-child{
-        font: ${({theme})=> theme.FONTS.POPPINS_100_MEDIUM};
+        font: ${({theme})=> theme.FONTS.ROBOTO_SMALLER_REGULAR};
         font-size: 1rem;
         color:  ${({theme})=> theme.COLORS.LIGHT_200}
     }
 
+    @media (min-width: 769px) {
+        justify-content: space-around;
+        margin-top: 15.5rem;
+        p:first-child{
+            font-size: 2.4rem;
+        }
+       
+        p:last-child{
+            font-size: 1.4rem;
+        }
+    }
 `
 
 export { Container }

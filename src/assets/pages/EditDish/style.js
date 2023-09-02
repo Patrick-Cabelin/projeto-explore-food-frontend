@@ -7,7 +7,68 @@ const Container = styled.div`
         'header'
         'content'
         'footer'
-        ;
+    ;
+
+    @media (min-width: 769px) {
+        main{
+            width: 116rem;
+
+            form{
+                align-items: flex-end;
+
+                > div{
+                    width: 100%;
+                }
+
+                > div:first-child{
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 3.2rem;
+
+                    div:nth-child(1){
+                        flex: .5;
+                    }
+                    div:nth-child(2){
+                        flex: 1;
+                    }
+                    div:nth-child(3){
+                        flex: .5;
+                    }
+
+                }
+
+                > div:nth-child(2){
+                    flex-direction: row;
+                    gap: 3.2rem;
+
+                    > div:nth-child(1){
+                        flex: 1.5;
+                    }
+                    
+                    > div:nth-child(2){
+                        flex: .5;
+                    }
+                }
+
+                > div:last-child{
+                    display: flex;
+                    gap: 3.2rem;
+                    width: auto;
+
+                    div:first-child{
+                        button{
+                            background: ${({theme})=> theme.COLORS.DARK_800};
+                        }
+                    }
+                    div{
+                        width: 17.2rem;
+                    }
+                } 
+            
+            }
+            
+        }
+    }
 `
 const Content = styled.main`
     grid-area: content;
@@ -34,11 +95,18 @@ const Content = styled.main`
         }
     }
 
-    `
+`
+
 const DishInfo = styled.form`
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
+
+    .info_box_wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: .8rem;
+    }
 
     label{
         font: ${({theme})=> theme.FONTS.ROBOTO_SMALL_REGULAR};
@@ -52,6 +120,7 @@ const DishInfo = styled.form`
         flex-direction: column;
         
         label:first-child{
+            margin-bottom: 0;
             > div{
                 display: flex;
                 flex-direction: row;
@@ -60,17 +129,16 @@ const DishInfo = styled.form`
                 
                 background: ${({theme})=> theme.COLORS.DARK_800};
                 border-radius: .8rem;
-                
                 height: 4.8rem;
-                margin-top: 1.6rem;
                 padding: 1.2rem 3.2rem;
-
+                margin-top: 1.6rem;
+                
                 font: ${({theme})=> theme.FONTS.POPPINS_100_MEDIUM};
                 color: ${({theme})=> theme.COLORS.LIGHT_100};
-            
-            input{
-                display: none;
-            }
+                
+                input{
+                    display: none;
+                }
            }
         }
 
@@ -88,7 +156,7 @@ const DishInfo = styled.form`
             border-radius: .5rem;
         }
         
-        label:nth-child(4){
+        #Icategory + label{
             margin-top: 1.6rem;
         }
     }
@@ -102,10 +170,39 @@ const DishInfo = styled.form`
         }
     }
 
+    #Iingredients{
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.4rem;
+    }
+
     > div:nth-child(3){
         display: flex;
         flex-direction: column;
-    } 
+    }
+
+    > div:last-child{
+        display: flex;
+        gap: 3.2rem;
+
+        > div:first-child{
+            button{
+                background: ${({theme})=> theme.COLORS.DARK_800};
+                
+                &:hover{
+                    filter: brightness(1.9);
+                    font-weight: 700;
+                }
+            }
+        }
+
+        div{
+            width: 16rem;
+            height: 4.8rem;
+        }
+    }
 `
 
 
