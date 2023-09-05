@@ -4,13 +4,16 @@ import { Input } from '../Input'
 import { Button } from '../Button'
 
 import {Icons} from '../../image/Icons'
+import { useAuth } from '../../../hooks/auth'
 
 function Header(){
-    const user={
-        admin: true
-    }
 
     const {Menu, Receipt, SignOut, Logo, Search} = Icons()
+    const {signOut,user} = useAuth()
+
+    function logout(){
+        signOut()
+    }
     return(
         <Container>
             <Menu onClick={()=>{}}/>
@@ -26,7 +29,7 @@ function Header(){
                 <Button orderNumber={23} icon={Receipt} className='version_mobile'/>
                 <Button title={`Pedidos`} orderNumber={23} icon={Receipt} className='version_desktop'/>
             </div>
-            <SignOut/>
+            <SignOut onClick={logout}/>
         </Container>
     )
 }

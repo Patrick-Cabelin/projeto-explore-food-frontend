@@ -88,6 +88,7 @@ const  Container = styled.header`
 
         div:last-child{
             display: block;
+            cursor: pointer;
         }
     }
 `

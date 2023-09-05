@@ -21,10 +21,12 @@ function SignUp(){
         navigate(-1)
     }
 
-    function register(){
-        api.post('/users', {name, email, password})
-        console.log()
-        
+    async function register(){
+           try {
+            await api.post('/users', {name, email, password})
+           } catch (error) {
+            alert(error.response.data.error)
+           }
     }
     return(
         <Container>

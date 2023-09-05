@@ -13,39 +13,8 @@ function Home(){
         title: 1,
         description: 2,
         price: 3
-    },{
-        title: 2,
-        description: 2,
-        price: 3
-    },{
-        title: 13,
-        description: 2,
-        price: 3
-    },{
-        title: 14,
-        description: 2,
-        price: 3
-    },{
-        title: 15,
-        description: 2,
-        price: 3
-    },{
-        title: 16,
-        description: 2,
-        price: 3
-    },{
-        title: 51,
-        description: 2,
-        price: 3
-    },{
-        title: 14,
-        description: 2,
-        price: 33
-    },{
-        title: 13,
-        description: 232,
-        price: 3
-    },])
+    }])
+    
     return(
         <Container>
             <Header/>

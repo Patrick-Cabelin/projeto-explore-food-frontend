@@ -22,7 +22,7 @@ const Container = styled.div`
 
                 > div:first-child{
                     flex-direction: row;
-                    align-items: center;
+                    align-items: flex-end;
                     gap: 3.2rem;
 
                     div:nth-child(1){
