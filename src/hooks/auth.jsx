@@ -6,6 +6,12 @@ const AuthContext = createContext({})
 
 function AuthProvider({children}){
     const [data, setData]= useState({})
+    const [dishData, setDishData]= useState({})
+
+    async function getAllDish(){
+        const response= await api.get('/dishes/showdishes')
+        setDishData(response.data)
+    }
 
     async function signIn({email, password}){
       try{
@@ -40,7 +46,6 @@ function AuthProvider({children}){
             fileUploadForm.append('image',dishFile)
 
             const response = await api.patch(`/imageofdish/${dish.id}`, fileUploadForm)
-            console.log(response.data)
             dish.image = response.data.image
         }
 
@@ -57,10 +62,20 @@ function AuthProvider({children}){
       }
     }
 
+    async function UploadImage({ imageOfDish, name }) {
+        const fileUploadForm = new FormData()
+        fileUploadForm.append('newimage', imageOfDish)
+        fileUploadForm.append('name', name)
+
+        const response = await api.post('/dishes/imageofdish', fileUploadForm, name)
+    
+        return response
+    }
+    
     useEffect(()=>{
+        getAllDish()
         const user = localStorage.getItem('@ExploreFood:user')
         const token = localStorage.getItem('@ExploreFood:token')
-
         if(user && token){
             api.defaults.headers.common['authorization']  = `Bearer ${token}`
           
@@ -68,6 +83,7 @@ function AuthProvider({children}){
             user: JSON.parse(user),
             token
         })
+
     }
     },[])
 
@@ -77,7 +93,8 @@ function AuthProvider({children}){
             signIn,
             signOut,
             UpdateDish,
-            
+            UploadImage,
+            dishes: dishData,
             user: data.user
             }
             }>

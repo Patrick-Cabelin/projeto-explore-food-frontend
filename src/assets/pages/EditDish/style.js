@@ -173,9 +173,18 @@ const DishInfo = styled.form`
     #Iingredients{
         display: flex;
         align-items: center;
+        align-content: center;
         gap: 1.6rem;
         flex-wrap: wrap;
+
         margin-bottom: 2.4rem;
+        padding: .8rem 0;
+        background: ${({theme})=> theme.COLORS.DARK_800};
+        border-radius: .8rem;
+
+        div, input{
+            height: 4.8rem;
+        }
     }
 
     > div:nth-child(3){

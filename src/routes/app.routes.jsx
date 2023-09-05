@@ -21,7 +21,7 @@ function AppRoutes(){
         element: <NewDish/>, 
     },
     {
-        path:'/editdish' ,
+        path:'/editdish/:id' ,
         element: <EditDish/>, 
     }
    ]) 

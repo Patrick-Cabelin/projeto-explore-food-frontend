@@ -1,6 +1,7 @@
 import {Container,Content, DishInfo} from './style'
 
-import { Icons } from '../../image/Icons'
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { Header } from '../../components/Header'
 import { ButtonText } from '../../components/ButtonText'
@@ -9,11 +10,74 @@ import { Input } from '../../components/Input'
 import { DishIngredients } from '../../components/DishIngredients'
 import { TextArea } from '../../components/TextArea'
 import { Footer } from '../../components/Footer'
-import { useState } from 'react'
+
+import { Icons } from '../../image/Icons'
+import { api } from '../../../services/api'
+import { useAuth } from '../../../hooks/auth'
 
 function EditDish(){
-        const {Upload, CareLeft} = Icons()
-        const [listIngredients, setListIngredients] = useState(['camarão',2,3,4,5,6,7,8])
+    const {Upload, CareLeft} = Icons()
+
+    const {UpdateDish, dishes} = useAuth()
+
+    const navigate = useNavigate()
+    const params = useParams()
+    
+    const [listIngredients, setListIngredients] = useState([])
+    const [newIngredients, setNewIngredients] = useState('')
+    
+    const [imageOfDish, setImageOfDish] = useState('')
+    const [name, setName] = useState('')
+    const [price, setPrice] = useState(0)
+    const [category, setCategory] = useState('')
+    const [description, setDescription] = useState('')
+    
+    async function handleImageOfDish(event){
+        const file = event.target.files[0]
+        setImageOfDish(file)
+    }
+    
+    function handleAddIngredient(){
+        setListIngredients(prevState=> [...prevState , newIngredients])
+        setNewIngredients('')
+    }
+    
+    
+    function handleRemoveIngredient(deleted){
+        setListIngredients(prevState=> prevState.filter(ingredient => ingredient !== deleted))
+    }
+
+    useEffect(()=>{
+        try{
+            // eslint-disable-next-line no-inner-declarations
+            async function fecthDish(){
+                const response = await api.get(`/dishes/${params.id}`)
+                const ListIngredients = await api.get(`/dishes/ingredients/${params.id}`)
+
+                if (Array.isArray(ListIngredients.data)) {
+                    const listIngredientsName = ListIngredients.data.map(ingredient => ingredient.name)
+                    
+                    setListIngredients(listIngredientsName)
+                    
+                } 
+
+                setName(response.data.name)
+                setPrice(response.data.price)
+                setCategory(response.data.category)
+                setDescription(response.data.description)
+            }
+            fecthDish()
+
+            console.log(listIngredients)
+        }catch(error){
+            if(error.response){
+                alert(error.response.data.error)
+            }else{
+                alert("Não foi possível carregar as informações do prato. Por favor, Recarregue a página")
+            }
+        }
+    },[])
+    
     return(
         <Container>
             <Header/>
@@ -26,22 +90,22 @@ function EditDish(){
                         <label htmlFor='IdishImage'>Imagem do prato
                             <div>
                                 <Upload/>
-                                Selecionar Imagem 
-                                <Input type='file' id='IdishImage'/>
+                                Selecionar Imagem
+                                <Input type='file' id='IdishImage'onChange={handleImageOfDish}/>
                             </div>
                         </label>
                         
                         <div className='info_box_wrapper'>
                             <label htmlFor='Iname'>Nome</label>
-                            <Input type='text' id='Iname' placeholder={'Ex.: Salada Ceasar'} />
+                            <Input type='text' id='Iname' placeholder={name} onChange={(e)=>setName(e.target.value)}/>
                         </div>
 
                         <div className='info_box_wrapper'>
                             <label htmlFor='Icategory'>Categoria</label>
-                            <select id='Icategory'>
-                                <option value='opcao1'>Opção 1</option>
-                                <option value='opcao2'>Opção 2</option>
-                                <option value='opcao3'>Opção 3</option>
+                            <select id='Icategory' onChange={e =>setCategory(e.target.value)}>
+                                <option value='main_course' >Prato principal</option>
+                                <option value='desserts'>Sobremesa</option>
+                                <option value='drinks'>Bebidas</option>
                             </select>
                         </div>
                     </div>
@@ -51,35 +115,36 @@ function EditDish(){
                             <label htmlFor='Iingredients'>Ingredientes</label>
                             <div id='Iingredients'>
                                 {
-                                    listIngredients && listIngredients.map((ingredient, index) =>(
+                                    Array.isArray(listIngredients) && listIngredients.length > 0 && listIngredients.map((ingredient, index) =>(
                                         <DishIngredients
                                             key={String(index)}
                                             value={ingredient}
-                                            onClick={()=>{}}
+                                            onClick={() => handleRemoveIngredient(ingredient)}
                                         />
                                     ))
                                 }
-                                <DishIngredients
+                            <DishIngredients
                                     isNew
-                                    placeholder='Novo link'
-                                    value={''}
-                                    onChange={e => setListIngredients(e.target.value)}
-                                    onClick={()=>{}}
+                                    placeholder='Novo Ingrediente'
+                                    value={newIngredients}
+                                    onChange={e => setNewIngredients(e.target.value)}
+                                    onClick={handleAddIngredient}
                                 />
                             </div>
                         </div>
 
                         <div className='info_box_wrapper'>
                             <label htmlFor='Iprice'>Preço</label>
-                            <Input type='number' placeholder={'R$ 99,99'} />
+                            <Input type='number' placeholder={price} step="0.01" onChange={(e)=>setPrice(e.target.value)}/>
                         </div>
 
                     </div>
 
                     <div className='info_box_wrapper'>
                         <label htmlFor='Idescription'>Descrição</label>
-                        <TextArea id='Idescription' placeholder='Fale brevemente sobre o prato, seus ingredientes e composição'/>
+                        <TextArea id='Idescription' placeholder={description} onChange={(e)=>setDescription(e.target.value)}/>
                     </div>
+
 
                     <div>
                         <Button title={'Excluir Prato'} />
