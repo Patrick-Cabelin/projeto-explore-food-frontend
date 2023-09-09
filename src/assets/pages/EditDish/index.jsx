@@ -41,17 +41,33 @@ function EditDish(){
         setListIngredients(prevState=> [...prevState , newIngredients])
         setNewIngredients('')
     }
-    
-    
+        
     function handleRemoveIngredient(deleted){
         setListIngredients(prevState=> prevState.filter(ingredient => ingredient !== deleted))
     }
 
+    
+    async function updateDish(){
+        try{
+            const dishUpdated = {
+                name,
+                price,
+                category,
+                description
+            }
+            const dishOld = dishes.filter(dish => dish.id == params.id)
+            const newDish = Object.assign(dishOld[0], dishUpdated)
+            
+            await UpdateDish({dish: newDish, dishFile: imageOfDish})
+
+        }catch {
+            alert('algo deu errado, Desculpe, recarrege a página e tente de novo')
+        }
+    }
     useEffect(()=>{
         try{
-            // eslint-disable-next-line no-inner-declarations
             async function fecthDish(){
-                const response = await api.get(`/dishes/${params.id}`)
+                const response = await api.get(`/dishes/dish/${params.id}`)
                 const ListIngredients = await api.get(`/dishes/ingredients/${params.id}`)
 
                 if (Array.isArray(ListIngredients.data)) {
@@ -67,8 +83,6 @@ function EditDish(){
                 setDescription(response.data.description)
             }
             fecthDish()
-
-            console.log(listIngredients)
         }catch(error){
             if(error.response){
                 alert(error.response.data.error)
@@ -147,8 +161,8 @@ function EditDish(){
 
 
                     <div>
-                        <Button title={'Excluir Prato'} />
-                        <Button title={'Adicionar'} />
+                        <Button title={'Excluir Prato'} onClick={()=>{}}/>
+                        <Button title={'Adicionar'} onClick={updateDish}/>
                     </div>
 
                 </DishInfo>

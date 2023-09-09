@@ -37,6 +37,18 @@ const Container = styled.div`
                     }
                 }
             }
+        
+            section{
+                h2{
+                    margin-bottom: 2.2rem;
+                }
+
+                > div{
+                    width: 100%;
+                    height: 53rem;
+                    position: relative;
+                }
+            }
         }
 
     }
@@ -97,7 +109,9 @@ const Menu = styled.section`
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
+    
     margin-top: 6.2rem;
+    width: 100%;
    
     h2{
         font: 500 1.8rem/140% "Poppins", sans-serif;

@@ -7,30 +7,75 @@ import { ButtonText } from '../../components/ButtonText'
 import { Button } from '../../components/Button'
 import { Footer } from '../../components/Footer'
 
-import exemplo from '/exemplo.svg'
+import { useEffect, useState } from 'react'
+import { api } from '../../../services/api'
+
+import { useNavigate, useParams } from 'react-router-dom'
 function DishPreview(){
     const {CareLeft, Minus, Plus, Receipt} = Icons()
+    
+    const navigate = useNavigate()
+    const params = useParams()
+
+    const [listIngredients, setListIngredients] = useState([])
+ 
+    const [imageOfDish, setImageOfDish] = useState('')
+    const [name, setName] = useState('')
+    const [price, setPrice] = useState(0)
+    const [description, setDescription] = useState('')
+
+    function handleBack(){
+        navigate(-1)
+    }
+
+
+    async function fecthDish(){
+        const response = await api.get(`/dishes/dish/${params.id}`)
+        const ListIngredients = await api.get(`/dishes/ingredients/${params.id}`)
+        
+        if (Array.isArray(ListIngredients.data)) {
+            const listIngredientsName = ListIngredients.data.map(ingredient => ingredient.name)
+            
+            setListIngredients(listIngredientsName)
+        }
+
+        setName(response.data[0].name)
+        setPrice(response.data[0].price)
+        setDescription(response.data[0].description)
+        setImageOfDish(response.data[0].image_of_dish)
+    }
+
+    useEffect(()=>{
+        try{
+            fecthDish()
+        }catch(error){
+            if(error.response)return alert(error.response.data.error)
+
+            return alert("Não foi possível carregar as informações do prato. Por favor, Recarregue a página")
+        }
+    },[])
     return(
         <Container>
             <Header/>
 
             <Content>
-                <ButtonText title={'voltar'} icon={CareLeft}/>
+                <ButtonText title={'Voltar'} icon={CareLeft} onClick={handleBack}/>
                 
                 <div>
-                    <img src={exemplo} alt={`imagem do prato ${'salada'}`} />
+                    <img src={imageOfDish} alt={`imagem do prato ${name}`} />
 
                     <div>
-                        <h1>Salada</h1>
-                        <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.</p>
+                        <h1>{name}</h1>
+                        <p>{description}</p>
 
                         <div>
-                            <IngredientsDish>Alface</IngredientsDish>
-                            <IngredientsDish>Cebola</IngredientsDish>
-                            <IngredientsDish>Pão</IngredientsDish>
-                            <IngredientsDish>Pepino</IngredientsDish>
-                            <IngredientsDish>Rabanete</IngredientsDish>
-                            <IngredientsDish>Tomate</IngredientsDish>
+                            {
+                                Array.isArray(listIngredients) && listIngredients.length > 0 && listIngredients.map((ingredient, index) =>(
+                                    <IngredientsDish
+                                        key={String(index)}
+                                    >{ingredient}</IngredientsDish>
+                                ))
+                            }
                         </div>
                     
                         <div>
@@ -40,7 +85,7 @@ function DishPreview(){
                                 <Plus/>
                             </QuantyController>
 
-                            <Button icon={ Receipt } title={`pedir ∙ R$ ${25.99}`}/>
+                            <Button icon={ Receipt } title={`pedir ∙ R$ ${price}`}/>
                         </div>
                     </div>
 

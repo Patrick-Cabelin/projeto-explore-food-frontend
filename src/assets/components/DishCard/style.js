@@ -4,7 +4,6 @@ const Container = styled.div`
     width: 21rem;
     height: 29.2rem;
     padding: 2.4rem;
-    /* position: absolute; */
 
     display: flex;
     flex-direction: column;
@@ -42,6 +41,7 @@ const Container = styled.div`
         position: relative;
         top: 0rem;
         left: 7rem;
+        z-index: 1;
     }
     
     div:last-child{
@@ -88,6 +88,7 @@ const Container = styled.div`
         .favorite, .config{
             top: 1rem;
             left: 11rem;
+            z-index: 1;
         }
     }
 `

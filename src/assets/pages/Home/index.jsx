@@ -1,23 +1,64 @@
 import {Container, Content, Menu} from './style'
 
+import { useState, useEffect } from 'react'
+import {  useNavigate,  } from 'react-router-dom'
+
 import { Header } from '../../components/Header'
 import { DishCard } from '../../components/DishCard'
 import { DishCarousel } from '../../components/DishCarousel'
 import { Footer } from '../../components/Footer'
 
 import sugar from '/sugar.svg'
-import { useState } from 'react'
+import { api } from '../../../services/api'
 
 function Home(){
-    const [t, setT] = useState([{
-        title: 1,
-        description: 2,
-        price: 3
-    }])
+    const [dishData, setDishData] = useState([])
+    const [search, setSearch] = useState('')
+    const [ingredients, setIngredients] = useState([])
+
+    const navigate = useNavigate()
+
+    async function navigatePreviewDish(id){
+        navigate(`/preview/${id}`)
+    }
+
+    async function searchDish(){
+        const response = await api.get(`/dishes/showdishes/`, {
+            params: {
+              name: search,
+              ingredients
+            },
+          })
+        setDishData(response.data)
+
+        return response
+    }
     
+    async function fecthDish(){
+        const response = await api.get(`/dishes/showdishes`)
+        setDishData(response.data)
+        
+        return response
+    }
+    
+    useEffect(()=>{
+        try{
+            fecthDish()
+        }catch(error){
+            if(error.response){
+                alert(error.response.data.error)
+            }else{
+                alert("Não foi possível carregar as informações do prato. Por favor, Recarregue a página")
+            }
+        }
+    },[])
+
+    useEffect(()=>{
+        searchDish()
+    },[search])
     return(
         <Container>
-            <Header/>
+            <Header onChange={(event)=>{setSearch(event.target.value)}}/>
 
             <Content>
                 <div>
@@ -32,14 +73,19 @@ function Home(){
                     <h2>Pratos principais</h2>
 
                     <DishCarousel>
-                        
                         {
-                            t && t.map(t =>{
-                                <DishCard
-                                title={t.title}
-                                description={t.description}
-                                price={t.price}
-                                />
+                            Array.isArray(dishData) && dishData.length > 0 && dishData.map((dish, index )=>{
+                                console.log(dish)
+                                return (
+                                    <DishCard
+                                    key={String(index)}
+                                    name={dish.name}
+                                    description={dish.description}
+                                    price={dish.price}
+                                    image= {dish.image_of_dish}
+                                    onClick={()=>{navigatePreviewDish(dish.id)}}
+                                    />
+                                    )
                             })
                         }
                     </DishCarousel>
@@ -49,29 +95,41 @@ function Home(){
                 <Menu>
                     <h2>Sobremesas</h2>
 
-                    <div>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                    </div>
+                    
+                    <DishCarousel>
+                        {
+                            Array.isArray(dishData) && dishData.length > 0 && dishData.map((dish, index )=>{
+                                return (
+                                    <DishCard
+                                    key={String(index)}
+                                    name={dish.name}
+                                    description={dish.description}
+                                    price={dish.price}
+                                    />
+                                    )
+                            })
+                        }
+                    </DishCarousel>
                 </Menu>
 
                 <Menu>
                     <h2>Bebidas</h2>
 
-                    <div>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                        <DishCard title={'salada'} description={'aiai'} price={35.99}/>
-                    </div>
+                    
+                    <DishCarousel>
+                        {
+                            Array.isArray(dishData) && dishData.length > 0 && dishData.map((dish, index )=>{
+                                return (
+                                    <DishCard
+                                    key={String(index)}
+                                    name={dish.name}
+                                    description={dish.description}
+                                    price={dish.price}
+                                    />
+                                    )
+                            })
+                        }
+                    </DishCarousel>
                 </Menu>
             </Content>
             <Footer/>

@@ -41,7 +41,7 @@ function AuthProvider({children}){
     async function UpdateDish({dish, dishFile}){
        
         if(dishFile){
-            console.log(dishFile)
+            console.log(dish.id)
             const fileUploadForm= new FormData()
             fileUploadForm.append('image',dishFile)
 
@@ -50,10 +50,9 @@ function AuthProvider({children}){
         }
 
         try{
-          
-            await api.put('/dishes',dish)            
-
+            await api.put(`/dishes/editdish/${dish.id}`,dish)            
             alert('Atualizado com sucesso')
+
       }catch (error){
         if(error.response){
             alert(error.response.data.error)
