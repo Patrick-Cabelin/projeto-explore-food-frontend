@@ -28,7 +28,6 @@ function DishPreview(){
         navigate(-1)
     }
 
-
     async function fecthDish(){
         const response = await api.get(`/dishes/dish/${params.id}`)
         const ListIngredients = await api.get(`/dishes/ingredients/${params.id}`)
@@ -39,12 +38,12 @@ function DishPreview(){
             setListIngredients(listIngredientsName)
         }
 
-        setName(response.data[0].name)
-        setPrice(response.data[0].price)
-        setDescription(response.data[0].description)
-        setImageOfDish(response.data[0].image_of_dish)
+        setName(response.data.name)
+        setPrice(response.data.price)
+        setDescription(response.data.description)
+        setImageOfDish(response.data.image_of_dish)
     }
-
+    
     useEffect(()=>{
         try{
             fecthDish()

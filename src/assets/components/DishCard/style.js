@@ -10,6 +10,8 @@ const Container = styled.div`
     align-items: center;
     gap: 1.2rem;
 
+    cursor: pointer;
+
     svg{
         cursor: pointer;
     }
@@ -54,8 +56,8 @@ const Container = styled.div`
     }
 
     @media (min-width: 769px) {
-        width: 30rem;
-        height: 46.2rem;
+        width: 31rem;
+        height: 55rem;
         padding: 2.4rem;
         flex-direction: column;
         align-items: center;
@@ -63,15 +65,28 @@ const Container = styled.div`
         
         h2{
             font: ${({theme})=> theme.FONTS.POPPINS_300_BOLD};
-        }
-        
-        p{
-            display: block;
+            height: 5rem;
             text-align: center;
-            font: ${({theme})=> theme.FONTS.ROBOTO_SMALLER_REGULAR};
-            color: ${({theme})=> theme.COLORS.LIGHT_400};
         }
-        
+        >div:nth-child(4){
+           overflow: auto;
+            p{
+                display: block;
+                text-align: center;
+                font: ${({theme})=> theme.FONTS.ROBOTO_SMALLER_REGULAR};
+                color: ${({theme})=> theme.COLORS.LIGHT_400};
+            }
+            &::-webkit-scrollbar{
+                background: none;
+                width: .5rem;
+            }
+
+            &::-webkit-scrollbar-thumb{
+                background: ${({theme})=> theme.COLORS.CAKE_200};
+                border-radius: 1rem;
+            }
+        }
+                
         >span{
             font: ${({theme})=> theme.FONTS.ROBOTO_BIGGEST_REGULAR};
         }

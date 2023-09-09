@@ -23,7 +23,9 @@ function SignUp(){
 
     async function register(){
            try {
+            alert('Conta Criada com sucesso, Agora Faça o login')
             await api.post('/users', {name, email, password})
+            handleBack()
            } catch (error) {
             alert(error.response.data.error)
            }

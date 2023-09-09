@@ -79,12 +79,12 @@ const  Container = styled.header`
         > div:first-child{
             display: none;
         }
-
+        
         > div:nth-child(3){
             display: flex;
             width: 58rem;
+            position: relative;
         }
-
 
         div:last-child{
             display: block;

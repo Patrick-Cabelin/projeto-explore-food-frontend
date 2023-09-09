@@ -12,13 +12,16 @@ import sugar from '/sugar.svg'
 import { api } from '../../../services/api'
 
 function Home(){
-    const [dishData, setDishData] = useState([])
-    const [search, setSearch] = useState('')
-    const [ingredients, setIngredients] = useState([])
-
     const navigate = useNavigate()
 
-    async function navigatePreviewDish(id){
+    const [dishData, setDishData] = useState([])
+    const [search, setSearch] = useState('')
+
+    const[mainDish,setMainDish]=useState([])
+    const[desserts,setDesserts]=useState([])
+    const[drinks,setDrinks]=useState([])
+
+    function navigatePreviewDish(id){
         navigate(`/preview/${id}`)
     }
 
@@ -26,21 +29,24 @@ function Home(){
         const response = await api.get(`/dishes/showdishes/`, {
             params: {
               name: search,
-              ingredients
             },
-          })
+        })
         setDishData(response.data)
-
-        return response
+        return
     }
     
     async function fecthDish(){
         const response = await api.get(`/dishes/showdishes`)
         setDishData(response.data)
-        
-        return response
+        return 
     }
     
+    function SetMenu(){
+        setMainDish(dishData.filter(dish => dish.category == 'main_dishes'))
+        setDesserts(dishData.filter(dish => dish.category == 'desserts'))
+        setDrinks(dishData.filter(dish => dish.category == 'drinks'))
+    }
+
     useEffect(()=>{
         try{
             fecthDish()
@@ -53,9 +59,14 @@ function Home(){
         }
     },[])
 
+    useEffect(() => {
+        SetMenu()
+    }, [dishData])
+
     useEffect(()=>{
         searchDish()
     },[search])
+
     return(
         <Container>
             <Header onChange={(event)=>{setSearch(event.target.value)}}/>
@@ -74,11 +85,12 @@ function Home(){
 
                     <DishCarousel>
                         {
-                            Array.isArray(dishData) && dishData.length > 0 && dishData.map((dish, index )=>{
-                                console.log(dish)
+                            Array.isArray(mainDish) && mainDish.length > 0 && mainDish.map((dish, index )=>{
+                        
                                 return (
                                     <DishCard
                                     key={String(index)}
+                                    id={dish.id}
                                     name={dish.name}
                                     description={dish.description}
                                     price={dish.price}
@@ -94,17 +106,18 @@ function Home(){
 
                 <Menu>
                     <h2>Sobremesas</h2>
-
                     
                     <DishCarousel>
                         {
-                            Array.isArray(dishData) && dishData.length > 0 && dishData.map((dish, index )=>{
+                            Array.isArray(desserts) && desserts.length > 0 && desserts.map((dish, index )=>{
+                                
                                 return (
                                     <DishCard
                                     key={String(index)}
                                     name={dish.name}
                                     description={dish.description}
                                     price={dish.price}
+                                    onClick={()=>{navigatePreviewDish(dish.id)}}
                                     />
                                     )
                             })
@@ -114,17 +127,17 @@ function Home(){
 
                 <Menu>
                     <h2>Bebidas</h2>
-
                     
                     <DishCarousel>
                         {
-                            Array.isArray(dishData) && dishData.length > 0 && dishData.map((dish, index )=>{
+                            Array.isArray(drinks) && drinks.length > 0 && drinks.map((dish, index )=>{
                                 return (
                                     <DishCard
                                     key={String(index)}
                                     name={dish.name}
                                     description={dish.description}
                                     price={dish.price}
+                                    onClick={()=>{navigatePreviewDish(dish.id)}}
                                     />
                                     )
                             })

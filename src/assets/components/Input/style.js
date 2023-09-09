@@ -28,6 +28,7 @@ const Container = styled.div`
     
     &placeholder{
         color:${({ theme }) => theme.COLORS.LIGHT_500};
+        color: pink;
       }    
       
       &:focus{
@@ -36,8 +37,13 @@ const Container = styled.div`
 
   }
 
-  svg{
-    margin: 1.2rem 1.4rem;
+  > div:first-child{
+    position: absolute;
+    left: 0;
+
+    svg{
+      margin: 1.2rem 1.4rem;
+    }
   }
 
   @media (min-width: 769px) {
@@ -46,8 +52,5 @@ const Container = styled.div`
     justify-content: center;
     gap: 1.4rem
 
-    input{
-      /* background-color: red; */
-    }
   }
 `;

@@ -32,6 +32,10 @@ function EditDish(){
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
     
+    function handleBack(){
+        navigate(-1)
+    }
+
     async function handleImageOfDish(event){
         const file = event.target.files[0]
         setImageOfDish(file)
@@ -45,7 +49,6 @@ function EditDish(){
     function handleRemoveIngredient(deleted){
         setListIngredients(prevState=> prevState.filter(ingredient => ingredient !== deleted))
     }
-
     
     async function updateDish(){
         try{
@@ -57,31 +60,46 @@ function EditDish(){
             }
             const dishOld = dishes.filter(dish => dish.id == params.id)
             const newDish = Object.assign(dishOld[0], dishUpdated)
-            
+
+            alert('Prato editado com sucesso')
+            handleBack()
             await UpdateDish({dish: newDish, dishFile: imageOfDish})
 
         }catch {
             alert('algo deu errado, Desculpe, recarrege a página e tente de novo')
         }
     }
+
+    async function deleteDish(){
+        const confirmDelete= confirm('Quer mesmo deleter esse prato?')
+        
+        if(confirmDelete){
+            alert('Prato lavado com sucesso!')
+            handleBack()
+            await api.delete(`/dishes/dish/${params.id}`)
+            fecthDish()
+        }
+
+    }
+
+    async function fecthDish(){
+        const response = await api.get(`/dishes/dish/${params.id}`)
+        const ListIngredients = await api.get(`/dishes/ingredients/${params.id}`)
+
+        if (Array.isArray(ListIngredients.data)) {
+            const listIngredientsName = ListIngredients.data.map(ingredient => ingredient.name)
+
+            setListIngredients(listIngredientsName)
+        }
+
+        setName(response.data.name)
+        setPrice(response.data.price)
+        setCategory(response.data.category)
+        setDescription(response.data.description)
+    }
+
     useEffect(()=>{
         try{
-            async function fecthDish(){
-                const response = await api.get(`/dishes/dish/${params.id}`)
-                const ListIngredients = await api.get(`/dishes/ingredients/${params.id}`)
-
-                if (Array.isArray(ListIngredients.data)) {
-                    const listIngredientsName = ListIngredients.data.map(ingredient => ingredient.name)
-                    
-                    setListIngredients(listIngredientsName)
-                    
-                } 
-
-                setName(response.data.name)
-                setPrice(response.data.price)
-                setCategory(response.data.category)
-                setDescription(response.data.description)
-            }
             fecthDish()
         }catch(error){
             if(error.response){
@@ -97,7 +115,7 @@ function EditDish(){
             <Header/>
 
             <Content>
-                <ButtonText title={'Voltar'} icon={CareLeft}/>
+                <ButtonText title={'Voltar'} icon={CareLeft} onClick={handleBack}/>
                 <h1>Editar prato</h1>
                 <DishInfo>
                     <div>
@@ -161,7 +179,7 @@ function EditDish(){
 
 
                     <div>
-                        <Button title={'Excluir Prato'} onClick={()=>{}}/>
+                        <Button title={'Excluir Prato'} onClick={deleteDish}/>
                         <Button title={'Adicionar'} onClick={updateDish}/>
                     </div>
 

@@ -32,12 +32,10 @@ function NewDish(){
         navigate(-1)
     }
 
-
     function handleAddIngredient(){
         setListIngredients(prevState=> [...prevState , newIngredients])
         setNewIngredients('')
-    }
-    
+    }    
     
     function handleRemoveIngredient(deleted){
         setListIngredients(prevState=> prevState.filter(ingredient => ingredient !== deleted))
@@ -47,7 +45,9 @@ function NewDish(){
         const file = event.target.files[0]
         setImageOfDish(file)
     }
-    async function newDish() {
+
+    async function newDish(e) {
+        e.preventDefault()
         const infoDishRequired = imageOfDish && name && category && price && description
         
         if(!infoDishRequired){
@@ -93,7 +93,8 @@ function NewDish(){
                 description
             })
             UploadImage({imageOfDish,name})
-        
+            
+            handleBack()
             alert('Prato adicionado no cardápio com sucesso!!')
         } catch (error){
             if(error.response){
@@ -102,7 +103,7 @@ function NewDish(){
                 alert('Não foi possivel se conectar')
           }    
     }
-}
+    }
 
     return(
         <Container>
@@ -128,8 +129,8 @@ function NewDish(){
 
                         <div className='info_box_wrapper'>
                             <label htmlFor='Icategory'>Categoria</label>
-                            <select id='Icategory' onChange={e =>setCategory(e.target.value)}>
-                                <option value='main_course' >Prato principal</option>
+                            <select id='Icategory' onChange={e =>setCategory(e.target.value)} >
+                                <option value='main_dishes' >Prato principal</option>
                                 <option value='desserts'>Sobremesa</option>
                                 <option value='drinks'>Bebidas</option>
                             </select>
@@ -171,7 +172,7 @@ function NewDish(){
                         <TextArea id='Idescription' placeholder='Fale brevemente sobre o prato, seus ingredientes e composição'onChange={(e)=>setDescription(e.target.value)}/>
                     </div>
 
-                    <Button title={'Adicionar'} onClick={newDish}/>
+                    <Button title={'Adicionar'} onClick={(e)=> {newDish(e)}}/>
                 </DishInfo>
             </Content>
         <Footer/>
