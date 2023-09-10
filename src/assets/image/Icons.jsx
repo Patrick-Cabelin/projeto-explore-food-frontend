@@ -41,7 +41,7 @@ function Icons(){
         )
     }
 
-    function Menu({onClick}){
+    function MenuButton({onClick}){
         return (
             <Container onClick={onClick}>
             <svg width="32" height="32" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,7 +165,7 @@ function Icons(){
     return{
         CareLeft,
         CareRight,
-        Menu,
+        MenuButton,
         Receipt,
         SignOut,
         Logo,

@@ -39,7 +39,6 @@ const Container = styled.div`
 
   > div:first-child{
     position: absolute;
-    left: 0;
 
     svg{
       margin: 1.2rem 1.4rem;

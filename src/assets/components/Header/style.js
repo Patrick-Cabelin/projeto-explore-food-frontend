@@ -84,6 +84,10 @@ const  Container = styled.header`
             display: flex;
             width: 58rem;
             position: relative;
+
+            div{
+                left: 0;
+            }
         }
 
         div:last-child{

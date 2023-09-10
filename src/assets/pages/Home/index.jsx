@@ -1,7 +1,7 @@
 import {Container, Content, Menu} from './style'
 
 import { useState, useEffect } from 'react'
-import {  useNavigate,  } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 
 import { Header } from '../../components/Header'
 import { DishCard } from '../../components/DishCard'
@@ -11,9 +11,11 @@ import { Footer } from '../../components/Footer'
 import sugar from '/sugar.svg'
 import { api } from '../../../services/api'
 
+import { MenuModal } from '../../components/MenuModal'
+
 function Home(){
     const navigate = useNavigate()
-
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const [dishData, setDishData] = useState([])
     const [search, setSearch] = useState('')
 
@@ -47,6 +49,11 @@ function Home(){
         setDrinks(dishData.filter(dish => dish.category == 'drinks'))
     }
 
+    function OpenAndCloseModalMenu(){
+        if(isModalOpen) return setIsModalOpen(false)
+        setIsModalOpen(true)
+    }
+
     useEffect(()=>{
         try{
             fecthDish()
@@ -69,8 +76,8 @@ function Home(){
 
     return(
         <Container>
-            <Header onChange={(event)=>{setSearch(event.target.value)}}/>
-
+            <Header onClick={OpenAndCloseModalMenu} onChange={(event)=>{setSearch(event.target.value)}}/>
+            {isModalOpen && <MenuModal onClick={OpenAndCloseModalMenu} isModalOpen={isModalOpen}/>}
             <Content>
                 <div>
                     <img src={sugar} alt={`imagem de doces caindo e colorido, amarelo, larajan, e verde, com framboesa, mirtilo`} />
@@ -79,7 +86,6 @@ function Home(){
                         <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
                     </div>
                 </div>
-                
                 <Menu>
                     <h2>Pratos principais</h2>
 

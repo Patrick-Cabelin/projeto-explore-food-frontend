@@ -9,7 +9,19 @@ const Container = styled.div`
         'content'
         'footer'
     ;
-
+    
+    .modal-open{
+        z-index: 99;
+        position: fixed;
+        background: #001119;
+    }
+    
+    .modal-close{
+        display: none;
+    }
+    
+    overflow: ${({isModalOpen}) => (isModalOpen ? 'hidden' : 'auto')};
+    
     @media (min-width: 769px) {
         main{
             width: 116rem;
@@ -67,6 +79,7 @@ const Content = styled.main`
         align-items: center;
         margin-top: 4.4rem;
         
+        width: 38rem;
         height: 12rem;
         text-align: start;
 
@@ -121,8 +134,8 @@ const Menu = styled.section`
         display: flex;
         align-items: center;
         
-        width: 38rem;
-        height: 35rem;
+        width: 100%;
+        height: 37rem;
         overflow-x: auto;
 
     }

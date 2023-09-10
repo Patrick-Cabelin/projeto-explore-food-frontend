@@ -20,7 +20,7 @@ function DishCard({name,description, price,...rest}){
         
         if(clickTarget == 'config') return navigate(`/editdish/${rest.id}`)
 
-        if(clickTarget == 'rec') return navigate(`/preview/${rest.id}`)
+        if(clickTarget == 'rec') return rest.onClick()
 
     }
     return(
@@ -36,15 +36,17 @@ function DishCard({name,description, price,...rest}){
             </div>
             <span>R${price}</span>
             
-            <div>
-                <QuantyController>
-                    <Minus/>
-                    <span>{quanty}</span>
-                    <Plus/>
-                </QuantyController>
+           {user.admin? '':
+                <div>
+                    <QuantyController>
+                        <Minus/>
+                        <span>{quanty}</span>
+                        <Plus/>
+                    </QuantyController>
 
-                <Button title={'incluir'}/>
-            </div>
+                    <Button title={'incluir'}/>
+                </div>
+            }
         
         </Container>
     )

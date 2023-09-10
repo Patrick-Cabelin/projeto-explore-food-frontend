@@ -2,14 +2,21 @@ import { styled } from 'styled-components'
 
 const Container = styled.div`
 
+    .rec-item-wrapper{
+        height: 37rem;
+    }
     .rec.rec-arrow{
         display: none;
     }
 
+    >div:first-child, div:last-child{
+        display: none;
+    }
     @media (min-width: 769px) {
         .rec-item-wrapper{
             height: 53rem;
         }
+
         > div:first-child{
             height: 100%;
             position: absolute;
