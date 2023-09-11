@@ -24,7 +24,7 @@ const Container = styled.div`
     .button-delete{
         color: ${({theme})=> theme.COLORS.LIGHT_100}
     }
-
+    
     >input{
         width: 11.6rem;
         height: 5.6rem;

@@ -74,6 +74,7 @@ const Conteiner = styled.div`
       &:hover{
       background: ${({theme}) => theme.COLORS.TOMATO_200 };
     }
+
     }
   }
 `;

@@ -19,12 +19,13 @@ function Header({...rest}){
     }
 
     function logout(){
+        navigate('/')
         signOut()
     }
 
     return(
         <Container>
-            <MenuButton onClick={()=> console.log(rest.onClick())}/>
+            <MenuButton onClick={()=> rest.onClick()}/>
             <div>
                 <Logo/>
                 <h1>Food Explore {user.admin?<span>admin</span>:<span></span>}</h1>

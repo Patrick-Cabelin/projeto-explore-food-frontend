@@ -11,23 +11,48 @@ import { useEffect, useState } from 'react'
 import { api } from '../../../services/api'
 
 import { useNavigate, useParams } from 'react-router-dom'
+import { useAuth } from '../../../hooks/auth'
+
 function DishPreview(){
     const {CareLeft, Minus, Plus, Receipt} = Icons()
     
     const navigate = useNavigate()
     const params = useParams()
-
+    const {user} = useAuth()
+    
     const [listIngredients, setListIngredients] = useState([])
- 
     const [imageOfDish, setImageOfDish] = useState('')
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [description, setDescription] = useState('')
+    const [quanty, setQuanty] = useState(0)
 
     function handleBack(){
         navigate(-1)
     }
+    
+    function navigateEditDish(id){
+        navigate(`/editdish/${id}`)
+    }
 
+    function handleQuanty(event){
+
+        const clickTarget = event.target.parentElement.classList[2]
+        console.log(clickTarget)
+        switch (clickTarget) {
+            case 'minus':
+                if (quanty > 0) {
+                    setQuanty(quanty - 1)
+                }
+                break
+                case 'plus':
+                setQuanty(quanty + 1)
+                break
+            default:
+                break
+            }
+    }
+    
     async function fecthDish(){
         const response = await api.get(`/dishes/dish/${params.id}`)
         const ListIngredients = await api.get(`/dishes/ingredients/${params.id}`)
@@ -43,7 +68,7 @@ function DishPreview(){
         setDescription(response.data.description)
         setImageOfDish(response.data.image_of_dish)
     }
-    
+
     useEffect(()=>{
         try{
             fecthDish()
@@ -53,6 +78,7 @@ function DishPreview(){
             return alert("Não foi possível carregar as informações do prato. Por favor, Recarregue a página")
         }
     },[])
+
     return(
         <Container>
             <Header/>
@@ -61,7 +87,7 @@ function DishPreview(){
                 <ButtonText title={'Voltar'} icon={CareLeft} onClick={handleBack}/>
                 
                 <div>
-                    <img src={imageOfDish} alt={`imagem do prato ${name}`} />
+                    <img src={`/files/${imageOfDish}`} alt={`imagem do prato ${name}`} />
 
                     <div>
                         <h1>{name}</h1>
@@ -77,15 +103,23 @@ function DishPreview(){
                             }
                         </div>
                     
-                        <div>
+                        {
+                            user.admin
+                            ?
+                            <div>
+                                <Button title={`editar prato`} onClick={()=>{navigateEditDish(params.id)}}/>
+                            </div>
+                            :
+                            <div onClick={(event)=> {handleQuanty(event)}}>
                             <QuantyController>
                                 <Minus/>
-                                <span>{10}</span>
+                                <span>{quanty}</span>
                                 <Plus/>
                             </QuantyController>
 
                             <Button icon={ Receipt } title={`pedir ∙ R$ ${price}`}/>
                         </div>
+                        }
                     </div>
 
                 </div>

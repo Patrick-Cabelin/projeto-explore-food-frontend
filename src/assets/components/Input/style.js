@@ -34,7 +34,6 @@ const Container = styled.div`
       &:focus{
         outline: .1rem solid ${({ theme }) => theme.COLORS.LIGHT_500};
       }
-
   }
 
   > div:first-child{

@@ -77,11 +77,10 @@ function NewDish(){
                     alert('Error desconhecido, por favor reniciar a página')
                     break
             }
-
+            return
         }
-        
-        if(listIngredients.length === 0){
-            alert('Por favor, preencha o campo de ingredientes do prato!!')
+        if(listIngredients.length === 0 || newIngredients){
+            return alert('Por favor, preencha o campo de ingredientes do prato!!')
         }
       
         try {
@@ -98,6 +97,7 @@ function NewDish(){
             alert('Prato adicionado no cardápio com sucesso!!')
         } catch (error){
             if(error.response){
+                console.log(error.response)
                 alert(error.response.data.error)
             }else{
                 alert('Não foi possivel se conectar')
@@ -150,7 +150,7 @@ function NewDish(){
                                         />
                                     ))
                                 }
-                            <DishIngredients
+                                <DishIngredients
                                     isNew
                                     placeholder='Novo Ingrediente'
                                     value={newIngredients}

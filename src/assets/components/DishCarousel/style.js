@@ -9,8 +9,10 @@ const Container = styled.div`
         display: none;
     }
 
-    >div:first-child, div:last-child{
-        display: none;
+    >div:first-child, > div:last-child{
+        button{
+            display: none;
+       }   
     }
     @media (min-width: 769px) {
         .rec-item-wrapper{

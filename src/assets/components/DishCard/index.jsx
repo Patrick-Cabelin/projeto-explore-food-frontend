@@ -7,29 +7,42 @@ import { useAuth } from '../../../hooks/auth'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-function DishCard({name,description, price,...rest}){
+function DishCard({name,description, price, image,...rest}){
     const { user } = useAuth()
     const navigate = useNavigate()
-
     const [quanty, setQuanty]= useState(0)
 
     const { Heart, Pincel, Minus, Plus} = Icons()
     
     function handleClick(event){
         const clickTarget = event.target.parentElement.classList[2]
-        
-        if(clickTarget == 'config') return navigate(`/editdish/${rest.id}`)
-
-        if(clickTarget == 'rec') return rest.onClick()
-
+        switch (clickTarget) {
+            case 'config':
+                navigate(`/editdish/${rest.id}`)
+                break
+            case 'rec':
+                rest.onClick()
+                break
+            case 'minus':
+                if (quanty > 0) {
+                    setQuanty(quanty - 1)
+                }
+                break
+            case 'plus':
+                setQuanty(quanty + 1)
+                break
+            default:
+                break
+        }
     }
+
     return(
         <Container
             onClick={(event)=>{handleClick(event)}}
         >
             
             {user.admin? <Pincel/>: <Heart/>}
-            <img src={exemplo} alt={`imagem do prato ${name}`} />
+            <img src={image} alt={`imagem do prato ${name}`} />
             <h2>{name}</h2>
             <div>
                 <p>{description}</p>
@@ -44,7 +57,7 @@ function DishCard({name,description, price,...rest}){
                         <Plus/>
                     </QuantyController>
 
-                    <Button title={'incluir'}/>
+                    <Button title={'incluir'} className={'include'}/>
                 </div>
             }
         

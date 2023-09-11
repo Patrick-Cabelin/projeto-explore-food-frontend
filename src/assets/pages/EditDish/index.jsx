@@ -31,6 +31,7 @@ function EditDish(){
     const [price, setPrice] = useState(0)
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
+    const [disabled,setDisabled]= useState(true)
     
     function handleBack(){
         navigate(-1)
@@ -60,12 +61,12 @@ function EditDish(){
             }
             const dishOld = dishes.filter(dish => dish.id == params.id)
             const newDish = Object.assign(dishOld[0], dishUpdated)
-
+            console.log(12)
             alert('Prato editado com sucesso')
             handleBack()
             await UpdateDish({dish: newDish, dishFile: imageOfDish})
 
-        }catch {
+        }catch(error) {
             alert('algo deu errado, Desculpe, recarrege a página e tente de novo')
         }
     }
@@ -180,7 +181,7 @@ function EditDish(){
 
                     <div>
                         <Button title={'Excluir Prato'} onClick={deleteDish}/>
-                        <Button title={'Adicionar'} onClick={updateDish}/>
+                        <Button title={'Adicionar'} disabled={disabled} onClick={updateDish}/>
                     </div>
 
                 </DishInfo>
