@@ -19,6 +19,7 @@ const Header= styled.div`
     div{
         display: flex;
         gap: 1.6rem;
+
         >span{
             color: ${({theme})=> theme.COLORS.LIGHT_100};
             font: ${({theme})=> theme.FONTS.ROBOTO_SMALL_REGULAR};

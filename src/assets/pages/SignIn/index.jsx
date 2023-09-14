@@ -6,7 +6,7 @@ import { useState } from 'react'
 import {Button} from '../../components/Button'
 import {ButtonText} from '../../components/ButtonText'
 import {Input} from '../../components/Input'
-import {Icons} from '../../image/Icons'
+import { Icons } from '../../Icons'
 import { useAuth } from '../../../hooks/auth'
 
 

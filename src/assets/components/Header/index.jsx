@@ -3,7 +3,7 @@ import { Container } from './style'
 import { Input } from '../Input'
 import { Button } from '../Button'
 
-import {Icons} from '../../image/Icons'
+import { Icons } from '../../Icons'
 import { useAuth } from '../../../hooks/auth'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'

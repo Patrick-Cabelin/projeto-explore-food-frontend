@@ -59,6 +59,9 @@ const Conteiner = styled.div`
       cursor: not-allowed;
     }
 
+    &:hover:not([disabled]){
+      background: ${({theme}) => theme.COLORS.TOMATO_200 };
+    }
     
     @media (min-width: 769px) {
       background: ${({theme}) => theme.COLORS.TOMATO_100 }; 
@@ -70,10 +73,6 @@ const Conteiner = styled.div`
         background: none;
         font: ${({theme}) => theme.FONTS.POPPINS_100_MEDIUM};
       }
-
-      &:hover{
-      background: ${({theme}) => theme.COLORS.TOMATO_200 };
-    }
 
     }
   }

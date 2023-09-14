@@ -11,7 +11,7 @@ import { DishIngredients } from '../../components/DishIngredients'
 import { TextArea } from '../../components/TextArea'
 import { Footer } from '../../components/Footer'
 
-import { Icons } from '../../image/Icons'
+import { Icons } from '../../Icons'
 import { api } from '../../../services/api'
 import { useAuth } from '../../../hooks/auth'
 
@@ -31,7 +31,6 @@ function EditDish(){
     const [price, setPrice] = useState(0)
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
-    const [disabled,setDisabled]= useState(true)
     
     function handleBack(){
         navigate(-1)
@@ -60,10 +59,11 @@ function EditDish(){
                 description
             }
             const dishOld = dishes.filter(dish => dish.id == params.id)
-            const newDish = Object.assign(dishOld[0], dishUpdated)
-            console.log(12)
+            const newDish = Object.assign(dishOld, dishUpdated)
+
             alert('Prato editado com sucesso')
             handleBack()
+
             await UpdateDish({dish: newDish, dishFile: imageOfDish})
 
         }catch(error) {
@@ -76,7 +76,7 @@ function EditDish(){
         
         if(confirmDelete){
             alert('Prato lavado com sucesso!')
-            handleBack()
+            navigate('/')
             await api.delete(`/dishes/dish/${params.id}`)
             fecthDish()
         }
@@ -181,7 +181,7 @@ function EditDish(){
 
                     <div>
                         <Button title={'Excluir Prato'} onClick={deleteDish}/>
-                        <Button title={'Adicionar'} disabled={disabled} onClick={updateDish}/>
+                        <Button title={'Adicionar'} onClick={updateDish}/>
                     </div>
 
                 </DishInfo>

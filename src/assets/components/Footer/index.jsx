@@ -1,6 +1,7 @@
 import { Container } from './style'
 
-import { Icons } from '../../image/Icons'
+import { Icons } from '../../Icons'
+
 function Footer(){
     const { Logo } = Icons()
     return(

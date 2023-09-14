@@ -1,13 +1,12 @@
 import { Conteiner } from './style';
 
-function Button({title, disabled = false, icon: Icon, className,...rest}){
+function Button({title, loading = false, icon: Icon, className,...rest}){
     return(
        <Conteiner
             {...rest}
             className={className}
-            disabled = {disabled}
        >
-        <button  className={className} disabled={false}>
+        <button  className={className} disabled={loading}>
             {Icon &&<Icon size={20}/>}
             <span>{title}</span>
             <span className='order'>{rest.orderNumber}</span>

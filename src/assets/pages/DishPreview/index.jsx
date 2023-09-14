@@ -1,6 +1,6 @@
 import {Container,Content, IngredientsDish, QuantyController} from './style'
 
-import { Icons } from '../../image/Icons'
+import { Icons } from '../../Icons'
 
 import { Header } from '../../components/Header'
 import { ButtonText } from '../../components/ButtonText'
@@ -38,7 +38,6 @@ function DishPreview(){
     function handleQuanty(event){
 
         const clickTarget = event.target.parentElement.classList[2]
-        console.log(clickTarget)
         switch (clickTarget) {
             case 'minus':
                 if (quanty > 0) {
@@ -87,7 +86,7 @@ function DishPreview(){
                 <ButtonText title={'Voltar'} icon={CareLeft} onClick={handleBack}/>
                 
                 <div>
-                    <img src={`/files/${imageOfDish}`} alt={`imagem do prato ${name}`} />
+                    <img src={`${api.defaults.baseURL}/files/${imageOfDish}`} alt={`imagem do prato ${name}`} />
 
                     <div>
                         <h1>{name}</h1>

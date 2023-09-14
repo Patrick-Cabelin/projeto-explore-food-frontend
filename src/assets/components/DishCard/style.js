@@ -44,6 +44,15 @@ const Container = styled.div`
         top: 0rem;
         left: 7rem;
         z-index: 1;
+        
+        svg:active{
+            animation: animateDishIcons 0.3s ease-in-out forwards;
+        }
+    }
+    .favorited{
+        svg{
+            fill: ${({theme}) => theme.COLORS.LIGHT_100 };
+        }
     }
     
     div:last-child{

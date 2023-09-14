@@ -14,12 +14,9 @@ const Container = styled.div`
         z-index: 99;
         position: fixed;
         background: #001119;
+        animation: slideInLeft 0.35s ease-in-out;
     }
-    
-    .modal-close{
-        display: none;
-    }
-    
+        
     overflow: ${({isModalOpen}) => (isModalOpen ? 'hidden' : 'auto')};
     
     @media (min-width: 769px) {

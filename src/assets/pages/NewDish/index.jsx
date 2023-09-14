@@ -1,5 +1,5 @@
 import {Container,Content, DishInfo} from './style'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Header } from '../../components/Header'
 import { ButtonText } from '../../components/ButtonText'
@@ -9,7 +9,7 @@ import { DishIngredients } from '../../components/DishIngredients'
 import { TextArea } from '../../components/TextArea'
 import { Footer } from '../../components/Footer'
 
-import { Icons } from '../../image/Icons'
+import { Icons } from '../../Icons'
 import { api } from '../../../services/api'
 import { useAuth } from '../../../hooks/auth'
 import { useNavigate } from 'react-router-dom'
@@ -27,6 +27,7 @@ function NewDish(){
     const [price, setPrice] = useState(0)
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
+    const [loading, setLoading] = useState(true)
 
     function handleBack(){
         navigate(-1)
@@ -97,13 +98,31 @@ function NewDish(){
             alert('Prato adicionado no cardápio com sucesso!!')
         } catch (error){
             if(error.response){
-                console.log(error.response)
                 alert(error.response.data.error)
             }else{
                 alert('Não foi possivel se conectar')
           }    
     }
     }
+
+    function checkAllInfoDish(){
+        const infoDishRequired = imageOfDish && name && category && price && description
+
+        if(!infoDishRequired) return setLoading(true)
+
+        setLoading(false)
+    }
+
+    useEffect(()=>{
+        checkAllInfoDish()
+    },[
+        listIngredients,
+        imageOfDish,
+        name,
+        price,
+        category,
+        description
+    ])
 
     return(
         <Container>
@@ -172,7 +191,7 @@ function NewDish(){
                         <TextArea id='Idescription' placeholder='Fale brevemente sobre o prato, seus ingredientes e composição'onChange={(e)=>setDescription(e.target.value)}/>
                     </div>
 
-                    <Button title={'Adicionar'} onClick={(e)=> {newDish(e)}}/>
+                    <Button title={'Adicionar'} loading={loading} onClick={(e)=> {newDish(e)}}/>
                 </DishInfo>
             </Content>
         <Footer/>

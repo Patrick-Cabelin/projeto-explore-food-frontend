@@ -86,7 +86,7 @@ const Content= styled.main`
                 
             p{
                 font: ${({theme})=> theme.FONTS.POPPINS_300_REGULAR};
-                text-align: center;
+                text-align: start;
             }
 
             > div{

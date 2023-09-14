@@ -1,6 +1,6 @@
 import { Container} from './style'
 
-import { Icons } from '../../image/Icons'
+import { Icons } from '../../Icons'
 
 function DishIngredients({value, onClick, isNew,...rest}){
     const {Plus, Close} = Icons()

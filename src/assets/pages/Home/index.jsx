@@ -92,7 +92,7 @@ function Home(){
                     <DishCarousel>
                         {
                             Array.isArray(mainDish) && mainDish.length > 0 && mainDish.map((dish, index )=>{
-                        
+                                                        
                                 return (
                                     <DishCard
                                     key={String(index)}
@@ -120,9 +120,11 @@ function Home(){
                                 return (
                                     <DishCard
                                     key={String(index)}
+                                    id={dish.id}
                                     name={dish.name}
                                     description={dish.description}
                                     price={dish.price}
+                                    image= {dish.image_of_dish}
                                     onClick={()=>{navigatePreviewDish(dish.id)}}
                                     />
                                     )
@@ -140,9 +142,11 @@ function Home(){
                                 return (
                                     <DishCard
                                     key={String(index)}
+                                    id={dish.id}
                                     name={dish.name}
                                     description={dish.description}
                                     price={dish.price}
+                                    image= {dish.image_of_dish}
                                     onClick={()=>{navigatePreviewDish(dish.id)}}
                                     />
                                     )

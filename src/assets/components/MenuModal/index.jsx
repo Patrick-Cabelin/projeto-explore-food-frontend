@@ -1,6 +1,6 @@
 import { Container, Header, Navigate } from './style'
 
-import { Icons } from '../../image/Icons'
+import { Icons } from '../../Icons'
 import { Input } from '../Input'
 import { ButtonText } from '../ButtonText'
 
