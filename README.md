@@ -26,6 +26,11 @@ Esse é o projeto de final da trilha Explore, a ideia é um restaurante fictíci
 - Middlewere
     - Multer (upload de imagem)
 
+## Acesso
+
+admin: 
+    Email: remy5estrela@gmail.com
+    senha: ratatouille
 ## Demonstração
 
 - Desktop:
