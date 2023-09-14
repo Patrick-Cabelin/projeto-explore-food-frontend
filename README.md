@@ -28,6 +28,10 @@ Esse é o projeto de final da trilha Explore, a ideia é um restaurante fictíci
 
 ## Demonstração
 
-- [Desktop]('./desktop.jpeg')
+- Desktop:
+  ![Desktop](./desktop.jpeg)
 
-- [Mobile]('./mobile.jpeg')
+
+- Mobile: 
+
+   ![Mobile](./mobile.jpeg)
