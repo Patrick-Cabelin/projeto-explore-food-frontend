@@ -29,8 +29,8 @@ Esse é o projeto de final da trilha Explore, a ideia é um restaurante fictíci
 ## Acesso
 
 admin: 
-    Email: remy5estrela@gmail.com
-    senha: ratatouille
+   - Email: remy5estrela@gmail.com
+   - senha: ratatouille
 ## Demonstração
 
 - Desktop:
