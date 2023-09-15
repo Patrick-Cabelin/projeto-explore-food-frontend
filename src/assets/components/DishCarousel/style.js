@@ -1,59 +1,71 @@
 import { styled } from 'styled-components'
 
 const Container = styled.div`
+    .alice-carousel__dots{
+            display: none;
+    } 
 
-    .rec-item-wrapper{
-        height: 37rem;
-    }
-    .rec.rec-arrow{
+    .alice-carousel__prev-btn, .alice-carousel__next-btn{
         display: none;
     }
-
-    >div:first-child, > div:last-child{
-        button{
-            display: none;
-       }   
+    
+    button{
+        cursor: pointer;
     }
+
     @media (min-width: 769px) {
-        .rec-item-wrapper{
-            height: 53rem;
-        }
+               
 
-        > div:first-child{
+        .alice-carousel__prev-btn{
+            display: flex;
+            
+            width: auto;
             height: 100%;
-            position: absolute;
-            z-index: 1;
 
             button{
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                
                 border: none;
-                background: linear-gradient(to bottom, ${({theme})=> theme.COLORS.DARK_400}, ${({theme})=> theme.COLORS.DARK_450});
+                background: linear-gradient(to bottom, #000A0F, #000A0F44);
                 width: 27.8rem;
                 height: 100%;
-            
+                color: ${({ theme }) => theme.COLORS.LIGHT_300};
+
                 display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
+                align-items: center;
+                justify-content: flex-start;
             }
+            
+
         }
 
-        >div:last-child{
+        .alice-carousel__next-btn{
+            display: flex;
+
+            width: auto;
             height: 100%;
-            position: absolute;
-            z-index: 1;
-            right: 0;
 
             button{
+                position: absolute;
+                z-index: 1;
+                right: 0;
+                top: 0;
+
+                color: ${({ theme }) => theme.COLORS.LIGHT_300};
                 border: none;
-                background: linear-gradient(to bottom, ${({theme})=> theme.COLORS.DARK_400}, ${({theme})=> theme.COLORS.DARK_450});
+                background: linear-gradient(to bottom, #000A0F, #000A0F44);
                 width: 27.8rem;
                 height: 100%;
-            
+
                 display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                justify-content: center;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-end;
             }
+
         }
     
     }

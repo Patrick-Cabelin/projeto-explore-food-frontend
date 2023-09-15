@@ -23,10 +23,6 @@ function Home(){
     const[desserts,setDesserts]=useState([])
     const[drinks,setDrinks]=useState([])
 
-    function navigatePreviewDish(id){
-        navigate(`/preview/${id}`)
-    }
-
     async function searchDish(){
         const response = await api.get(`/dishes/showdishes/`, {
             params: {
@@ -101,7 +97,6 @@ function Home(){
                                     description={dish.description}
                                     price={dish.price}
                                     image= {dish.image_of_dish}
-                                    onClick={()=>{navigatePreviewDish(dish.id)}}
                                     />
                                     )
                             })
@@ -125,7 +120,6 @@ function Home(){
                                     description={dish.description}
                                     price={dish.price}
                                     image= {dish.image_of_dish}
-                                    onClick={()=>{navigatePreviewDish(dish.id)}}
                                     />
                                     )
                             })
@@ -147,7 +141,6 @@ function Home(){
                                     description={dish.description}
                                     price={dish.price}
                                     image= {dish.image_of_dish}
-                                    onClick={()=>{navigatePreviewDish(dish.id)}}
                                     />
                                     )
                             })

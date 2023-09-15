@@ -13,7 +13,6 @@ export default createGlobalStyle`
     }
     body{
         background: ${({theme}) => theme.COLORS.DARK_400 };
-        overflow-y: auto;
     }
 
     @media (min-width: 769px) {

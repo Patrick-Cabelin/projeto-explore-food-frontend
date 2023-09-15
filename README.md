@@ -25,18 +25,10 @@ Esse é o projeto de final da trilha Explore, a ideia é um restaurante fictíci
     - JWT
 - Middlewere
     - Multer (upload de imagem)
+- react-alice-carousel
 
-## Acesso
-
-admin: 
-   - Email: remy5estrela@gmail.com
-   - senha: ratatouille
 ## Demonstração
 
-- Desktop:
-  ![Desktop](./desktop.jpeg)
+- [Desktop]('./desktop.jpeg')
 
-
-- Mobile: 
-
-   ![Mobile](./mobile.jpeg)
+- [Mobile]('./mobile.jpeg')

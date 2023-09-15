@@ -1,49 +1,67 @@
 import { Container } from './style'
-import Carousel from 'react-elastic-carousel'
-
 import { Icons } from '../../Icons'
 
-function DishCarousel({children}){
-  const {CareLeft, CareRight} = Icons()
-  const breakPoints = [
-    { width: 1, itemsToShow: 1.5 },
-    { width: 700, itemsToShow: 2.75 },
-    { width: 1200, itemsToShow: 3 },
-    { width: 1400, itemsToShow: 4 },
-  ]
+import { useEffect, useState } from 'react'
 
-  function carousel(){
-    carousel.slidePrev()
-  }
+import AliceCarousel from 'react-alice-carousel'
+import 'react-alice-carousel/lib/alice-carousel.css'
+
+
+function DishCarousel({ children }) {
+  const [dishCard, setDishcard]=useState([])
+  const [carousel, setCarousel] = useState(null)
+
+  const {CareLeft,CareRight} = Icons()
   
-  function carouselNext(){
-    carousel.slideNext()
+  const responsive={
+    400: {
+      items: 1.3,
+    },
+    769: {
+      items: 2.5,
+    },
+    1024: {
+      items: 3,
+    },
   }
+
+  useEffect(() => {
+    const newDishCard = [];
+  
+    for (let index = 0; index < children.length; index++) {
+      const dish = children[index];
+      if (dish !== undefined) {
+        newDishCard.push(dish);
+      }
+    }
+    setDishcard(newDishCard);
+  }, [children]);
 
   return (
     <Container>
+      <AliceCarousel
+        responsive={responsive}
+        buttonsDisabled={true}
+        dotsDisabled={true}
+        mouseTrackingEnabled={true}
+        mouseDragEnabled={true}
+          ref={(el) => setCarousel(el)}
 
-      <div>
-        <button onClick={carousel}>{<CareLeft/>}</button>
-      </div>
+          renderPrevButton={() => (
+            <button onClick={() => carousel.slidePrev()}>
+              <CareLeft />
+            </button>
+          )}
+          renderNextButton={() => (
+            <button onClick={() => carousel.slideNext()}>
+              <CareRight />
+            </button>
+          )}
 
-      <Carousel
-      breakPoints={breakPoints}
-      pagination={false}
-      showEmptySlots
-      transitionMs={750}
-      ref={ref => (carousel = ref)}
-      > 
-        {children}
-      </Carousel>
-
-      <div
-      >
-        <button onClick={carouselNext}>{<CareRight/>}</button>
-      </div>
-
+        items={dishCard}
+      />
     </Container>
   )
 }
 
-  export { DishCarousel }
+export { DishCarousel }

@@ -17,7 +17,8 @@ const Container = styled.div`
         animation: slideInLeft 0.35s ease-in-out;
     }
         
-    overflow: ${({isModalOpen}) => (isModalOpen ? 'hidden' : 'auto')};
+    overflow-y: ${({isModalOpen}) => (isModalOpen ? 'hidden' : 'auto')};
+    overflow-x: hidden;
     
     @media (min-width: 769px) {
         main{
@@ -54,9 +55,10 @@ const Container = styled.div`
 
                 > div{
                     width: 100%;
-                    height: 53rem;
+                    height: 100%;
                     position: relative;
                 }
+            
             }
         }
 
@@ -69,8 +71,9 @@ const Content = styled.main`
     flex-direction: column;
     align-items: center;
     gap: 2.4rem;
-    padding: 0 1.6rem;
 
+    padding: 0 1.6rem;
+    width: 100vw;
     >div{
         display: flex;
         align-items: center;
@@ -132,7 +135,7 @@ const Menu = styled.section`
         align-items: center;
         
         width: 100%;
-        height: 37rem;
+        height: 38rem;
         overflow-x: auto;
 
     }
