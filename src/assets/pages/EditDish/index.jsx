@@ -62,7 +62,7 @@ function EditDish(){
             const newDish = Object.assign(dishOld, dishUpdated)
 
             alert('Prato editado com sucesso')
-            handleBack()
+            navigate('/')
 
             await UpdateDish({dish: newDish, dishFile: imageOfDish})
 
