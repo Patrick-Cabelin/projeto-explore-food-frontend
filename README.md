@@ -30,6 +30,9 @@ Esse é o projeto de final da trilha Explore, a ideia é um restaurante fictíci
 ## Acesso Admin: 
     - email: remy5estrela@gmail.com
     - senha: ratatouille
+## Deploy
+- Frontend: [gusteaus.netlify.app](https://gusteaus.netlify.app/)
+- Backend: https://explorefood-api.onrender.com
 ## Demonstração
 
 - [Desktop]('./desktop.jpeg')
