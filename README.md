@@ -33,6 +33,7 @@ Esse é o projeto de final da trilha Explore, a ideia é um restaurante fictíci
 ## Deploy
 - Frontend: [gusteaus.netlify.app](https://gusteaus.netlify.app/)
 - Backend: https://explorefood-api.onrender.com
+  - [repositorio do backend](https://github.com/Patrick-Cabelin/projeto-explore-food-backend)     
 ## Demonstração
 
 - [Desktop]('./desktop.jpeg')
