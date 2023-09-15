@@ -27,6 +27,9 @@ Esse é o projeto de final da trilha Explore, a ideia é um restaurante fictíci
     - Multer (upload de imagem)
 - react-alice-carousel
 
+## Acesso Admin: 
+    - email: remy5estrela@gmail.com
+    - senha: ratatouille
 ## Demonstração
 
 - [Desktop]('./desktop.jpeg')
