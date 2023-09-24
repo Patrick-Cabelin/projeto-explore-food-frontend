@@ -18,11 +18,12 @@ import { useAuth } from '../../../hooks/auth'
 function EditDish(){
     const {Upload, CareLeft} = Icons()
 
-    const {UpdateDish, dishes} = useAuth()
+    const {UpdateDish} = useAuth()
 
     const navigate = useNavigate()
     const params = useParams()
     
+    const [dishOld, setDishOld] = useState([])
     const [listIngredients, setListIngredients] = useState([])
     const [newIngredients, setNewIngredients] = useState('')
     
@@ -58,12 +59,10 @@ function EditDish(){
                 category,
                 description
             }
-            const dishOld = dishes.filter(dish => dish.id == params.id)
+            
             const newDish = Object.assign(dishOld, dishUpdated)
-
             alert('Prato editado com sucesso')
             navigate('/')
-
             await UpdateDish({dish: newDish, dishFile: imageOfDish})
 
         }catch(error) {
@@ -93,6 +92,7 @@ function EditDish(){
             setListIngredients(listIngredientsName)
         }
 
+        setDishOld(response.data)
         setName(response.data.name)
         setPrice(response.data.price)
         setCategory(response.data.category)
@@ -136,7 +136,7 @@ function EditDish(){
                         <div className='info_box_wrapper'>
                             <label htmlFor='Icategory'>Categoria</label>
                             <select id='Icategory' onChange={e =>setCategory(e.target.value)}>
-                                <option value='main_course' >Prato principal</option>
+                                <option value='main_dishes' >Prato principal</option>
                                 <option value='desserts'>Sobremesa</option>
                                 <option value='drinks'>Bebidas</option>
                             </select>
