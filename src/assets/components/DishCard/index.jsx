@@ -18,18 +18,26 @@ function DishCard({name,description, price, image,...rest}){
     const { Heart, Pincel, Minus, Plus} = Icons()
 
     function handleClick(event){
-        const clickTarget = event.target.parentElement.classList[1] || event.target.parentElement.classList[2]
+        const clickTargetList = event.target.parentElement.classList
+        const clickTarget = Array.from(clickTargetList).filter(list =>
+            list== 'config' ||
+            list== '__active' ||
+            list== 'minus' ||
+            list== 'plus' ||
+            list== 'favorite' ||
+            list== 'favorited'
         
-        switch (clickTarget) {
+        )
+        
+        switch (clickTarget[0]) {
             
             case 'config':
                 navigate(`/editdish/${rest.id}`)
                 break
                 
                 case '__active':
-                console.log("ativ")
-                navigate(`/preview/${rest.id}`)
-                break
+                    navigate(`/preview/${rest.id}`)
+                    break
 
             case 'minus':
                 if (quanty > 0) {
@@ -46,12 +54,11 @@ function DishCard({name,description, price, image,...rest}){
                 break
 
             default:
-                console.log(event.target.parentElement.classList, 'defaulgt')
                 if(event.target.parentElement.parentElement.classList[3] === 'favorited'){
                     setFavorited('')
                 }
                 break
-        }
+            }
     }
     
     return(
