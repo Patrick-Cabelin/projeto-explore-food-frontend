@@ -6,12 +6,6 @@ const AuthContext = createContext({})
 
 function AuthProvider({children}){
     const [data, setData]= useState({})
-    const [dishData, setDishData]= useState({})
-
-    async function getAllDish(){
-        const response= await api.get('/dishes/showdishes')
-        setDishData(response.data)
-    }
 
     async function signIn({email, password}){
       try{
@@ -72,7 +66,6 @@ function AuthProvider({children}){
     }
     
     useEffect(()=>{
-        getAllDish()
         const user = localStorage.getItem('@ExploreFood:user')
         const token = localStorage.getItem('@ExploreFood:token')
         if(user && token){
@@ -93,7 +86,6 @@ function AuthProvider({children}){
             signOut,
             UpdateDish,
             UploadImage,
-            dishes: dishData,
             user: data.user
             }
             }>
